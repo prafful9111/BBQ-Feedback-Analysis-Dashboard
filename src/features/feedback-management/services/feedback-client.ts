@@ -4,14 +4,6 @@ import type { FeedbackListItem, FeedbackListResponse, FeedbackRecord } from '@/s
 
 import type { FeedbackFilterState } from '@/features/feedback-management/types';
 
-const dateToIsoStart = (date: string) => {
-  return new Date(`${date}T00:00:00.000Z`).toISOString();
-};
-
-const dateToIsoEnd = (date: string) => {
-  return new Date(`${date}T23:59:59.999Z`).toISOString();
-};
-
 export const getFeedbackList = async (filters: FeedbackFilterState): Promise<FeedbackListResponse> => {
   return listFeedbackByQuery({
     page: filters.page,
@@ -23,8 +15,8 @@ export const getFeedbackList = async (filters: FeedbackFilterState): Promise<Fee
     ratings: filters.ratings.length > 0 ? filters.ratings.join(',') : undefined,
     category: filters.category,
     severity: filters.severity,
-    dateFrom: filters.dateFrom ? dateToIsoStart(filters.dateFrom) : undefined,
-    dateTo: filters.dateTo ? dateToIsoEnd(filters.dateTo) : undefined,
+    dateFrom: filters.dateFrom || undefined,
+    dateTo: filters.dateTo || undefined,
   });
 };
 
