@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Rating {
+  EXCELLENT
+  GOOD
+  AVERAGE
+  POOR
+  NA
+}
+
+model FeedbackRecord {
+  id                      String   @id @default(cuid())
+  bookingId               String   @unique
+  outletId                String
+  outletName              String
+  city                    String
+  region                  String
+  callDate                DateTime
+  overallExperienceRating Rating
+  summary                 String?
+  translatedTranscript    String?
+  specialMentions         String[]
+  csatScorecard           Json
+  issueTickets            Json
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  @@index([callDate])
+  @@index([outletId])
+  @@index([overallExperienceRating])
+}

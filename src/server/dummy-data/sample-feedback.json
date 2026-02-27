@@ -1,0 +1,531 @@
+[
+  {
+    "id": "sample-1",
+    "bookingId": "BSM-000000004769",
+    "outletId": "630",
+    "outletName": "BLR-FORUM SHANTINIKETAN MALL",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-02T10:00:00.000Z",
+    "overallExperienceRating": "Good",
+    "csatScorecard": {
+      "kulfi": "Good",
+      "hygiene": "N/A",
+      "ambience": "N/A",
+      "beverages": "Good",
+      "staff_and_service": "Good",
+      "buffet_main_course": "Good",
+      "booking_and_billing": "Good",
+      "starters_and_grills": "Good",
+      "ambience_hygiene_overall": "Good",
+      "food_and_beverages_overall": "Good"
+    },
+    "summary": "I visited the Barbeque Nation outlet at Forum Shantiniketan Mall for dinner with a group of <span style=\"color: green;\">six people</span>. My <span style=\"color: green;\">overall experience was good</span>. I found the <span style=\"color: green;\">starters and buffet to be good</span>, and I also <span style=\"color: green;\">enjoyed the kulfi and drinks</span>. The <span style=\"color: green;\">service and ambience were both good</span>, and I had a <span style=\"color: green;\">smooth booking experience</span>. I don't have any specific suggestions to offer at this time.",
+    "translatedTranscript": "**Staff:** Hello, this is from Barbeque Nation Head Office.\n\n**Customer:** Yes, tell me.\n\n**Staff:** Sir, you visited the Barbeque Nation outlet at Forum Shantiniketan Mall for dinner yesterday?\n\n**Customer:** Yes.\n\n**Staff:** This is a feedback call regarding that, sir. This call will be recorded for improvement purposes. How was your overall experience yesterday?\n\n**Customer:** It was good.\n\n**Staff:** How was the food in the starters and buffet?\n\n**Customer:** No, it was good. Everything was good.\n\n**Staff:** Everything was good? Kulfi and drinks as well?\n\n**Customer:** Yes.\n\n**Staff:** How many members had gone, sir?\n\n**Customer:** Sorry?\n\n**Staff:** How many persons had gone, sir?\n\n**Customer:** Six, six.\n\n**Staff:** Okay. And how was the service and ambience there?\n\n**Customer:** Yes, everything was good.\n\n**Staff:** Everything was good? The booking experience as well?\n\n**Customer:** Yes, good.\n\n**Staff:** Okay. And would you like to give any suggestions from your side?\n\n**Customer:** No, nothing like that.\n\n**Staff:** Thank you so much for sharing your valuable feedback with us. Thank you.",
+    "specialMentions": null,
+    "issueTickets": []
+  },
+  {
+    "id": "sample-2",
+    "bookingId": "BSM-000000004741",
+    "outletId": "630",
+    "outletName": "BLR-FORUM SHANTINIKETAN MALL",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-03T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Excellent",
+      "hygiene": "N/A",
+      "ambience": "Excellent",
+      "beverages": "Excellent",
+      "staff_and_service": "Excellent",
+      "buffet_main_course": "Excellent",
+      "booking_and_billing": "Excellent",
+      "starters_and_grills": "Excellent",
+      "ambience_hygiene_overall": "N/A",
+      "food_and_beverages_overall": "N/A"
+    },
+    "summary": "I visited the Barbeque Nation outlet at Forum Shantiniketan Mall for lunch yesterday with a group of eight people. My <span style=\"color: green;\">overall experience was excellent</span>. I found the <span style=\"color: green;\">starters and buffet to be very good</span>. The <span style=\"color: green;\">service and ambience were also very good</span>, and I had a <span style=\"color: green;\">smooth booking experience</span>. Additionally, the <span style=\"color: green;\">kulfi and drinks were very good</span>. I don't have any other suggestions to provide.",
+    "translatedTranscript": "**Staff:** Hello.\n\n**Customer:** Hello.\n\n**Staff:** Good evening sir, I am Mamta calling from Barbeque Nation Head Office.\n\n**Customer:** Yeah ma'am.\n\n**Staff:** Sir yesterday you had your lunch at Forum Shantiniketan Mall Barbeque Nation?\n\n**Customer:** Yes ma'am.\n\n**Staff:** This is a feedback call sir, this call is being recorded for our improvement. How was your overall experience over there?\n\n**Customer:** It was excellent ma'am.\n\n**Staff:** Thank you so much. How was the starters and buffet?\n\n**Customer:** It was very good.\n\n**Staff:** Okay. And how was the service and ambience of the restaurant?\n\n**Customer:** Yes, service and everything was very good.\n\n**Staff:** Okay, everything was very good including booking experience also?\n\n**Customer:** Yes ma'am.\n\n**Staff:** And ambience also?\n\n**Customer:** Yes ma'am.\n\n**Staff:** Okay. And how many members you have visited there sir?\n\n**Customer:** Eight members.\n\n**Staff:** Okay sir. And how was the kulfi and drink?\n\n**Customer:** Uh, it was good, very good.\n\n**Staff:** Okay. Any other suggestion apart from this all sir?\n\n**Customer:** No ma'am, that's it.\n\n**Staff:** Okay sir, thank you so much for your valuable feedback and time. Thank you.",
+    "specialMentions": null,
+    "issueTickets": []
+  },
+  {
+    "id": "sample-3",
+    "bookingId": "BJP-000000004235",
+    "outletId": "27",
+    "outletName": "BLR-JP NAGAR",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-04T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Excellent",
+      "hygiene": "Excellent",
+      "ambience": "Excellent",
+      "beverages": "Good",
+      "staff_and_service": "Excellent",
+      "buffet_main_course": "Excellent",
+      "booking_and_billing": "Excellent",
+      "starters_and_grills": "Excellent",
+      "ambience_hygiene_overall": "Excellent",
+      "food_and_beverages_overall": "N/A"
+    },
+    "summary": "I visited the Bangalore JP Nagar outlet for dinner with my wife and my kid, who is below five years old. My <span style=\"color: green;\">overall experience was excellent</span>. The <span style=\"color: green;\">taste of the starters and the buffet was great and very excellent</span>. I was particularly impressed with the service; <span style=\"color: green;\">Bittu served us very well and provided excellent service</span>, so much so that I made sure to ask for his name. The <span style=\"color: green;\">ambience and hygiene were also very great</span>, and the <span style=\"color: green;\">booking and billing process was seamless</span>. We enjoyed the <span style=\"color: green;\">chocolate kulfi, which was very good</span>. Although the drinks were not part of our package and we paid extra for them, the <span style=\"color: green;\">watermelon juice and virgin mojito were nice</span>. I found the <span style=\"color: green;\">staff to be very empathetic</span> and have no suggestions for improvement as everything was very good.",
+    "translatedTranscript": "**Staff:** Hello.\n\n**Customer:** Yes.\n\n**Staff:** Sir, I am Hansika calling from the Barbeque Nation Head Office, sir.\n\n**Customer:** Yes, ma'am, please tell me.\n\n**Staff:** Sir, yesterday you have visited to the Bangalore JP Nagar outlet for your dinner, sir.\n\n**Customer:** Yes, ma'am.\n\n**Staff:** Sir, this is the feedback call and the call will be recorded for our quality purpose, sir.\n\n**Customer:** Yes, ma'am, tell me.\n\n**Staff:** Sir, how was your overall experience there?\n\n**Customer:** Yeah, it was good. It was excellent.\n\n**Staff:** Okay, and how was the taste of the starter and buffet, sir?\n\n**Customer:** Sir, it was... ma'am, it was very excellent. It was great.\n\n**Staff:** Okay, and how was the service, ambience, and hygiene, sir?\n\n**Customer:** So, ma'am, I think I was served by Bittu over there. And I think, yes ma'am, he served very well. Excellent service.\n\n**Staff:** Okay, sir.\n\n**Customer:** Yeah, I also asked his name also, that what is your name. So I already remember that, yes ma'am, he served very well.\n\n**Staff:** Okay, sir. And how was the ambience and hygiene, sir?\n\n**Customer:** Yes, ma'am, ambience and hygiene was very great.\n\n**Staff:** Okay, and sir, how was the booking and billing experience?\n\n**Customer:** Yeah, it was seamless.\n\n**Staff:** Okay, and how was the kulfi there, sir?\n\n**Customer:** Ma'am, kulfi was very fine. We had a chocolate kulfi.\n\n**Staff:** Okay. How was that in taste?\n\n**Customer:** Sorry?\n\n**Staff:** How was that, sir?\n\n**Customer:** Ma'am, it was very good.\n\n**Staff:** Okay, and how was the drinks there, sir?\n\n**Customer:** Ma'am, we had... I think the drinks wasn't served like in the package. We ordered by paying extra money.\n\n**Staff:** Okay, so how was the drinks there, sir?\n\n**Customer:** Ma'am, drinks was nice. We ordered watermelon juice and I think we have ordered one virgin mojito.\n\n**Staff:** Yes. Okay, sir. And do you want to give any suggestion, sir?\n\n**Customer:** Ma'am, no ma'am. It was very good. It was very good. People are very empathetic over there.\n\n**Staff:** Okay. And sir, with how many people you have visited there?\n\n**Customer:** Ma'am, with my family. My wife and my kid.\n\n**Staff:** Okay, and sir, your kid was below five years or above five years?\n\n**Customer:** No ma'am, he is below five years, ma'am.\n\n**Staff:** Okay, sir. And thank you so much for sharing the feedback, sir.\n\n**Customer:** Okay, ma'am. Okay, thank you, ma'am.\n\n**Staff:** Have a good day, sir. Bye.\n\n**Customer:** Bye, ma'am.",
+    "specialMentions": [
+      "Bittu provided excellent service and served the customer very well, leading the customer to specifically ask for his name.",
+      "The chocolate kulfi was mentioned as being very good in taste.",
+      "The watermelon juice and virgin mojito were specifically mentioned as being nice.",
+      "The staff in general were praised for being very empathetic."
+    ],
+    "issueTickets": []
+  },
+  {
+    "id": "sample-4",
+    "bookingId": "BJP-000000004217",
+    "outletId": "27",
+    "outletName": "BLR-JP NAGAR",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-05T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "N/A",
+      "hygiene": "N/A",
+      "ambience": "N/A",
+      "beverages": "Good",
+      "staff_and_service": "Good",
+      "buffet_main_course": "Excellent",
+      "booking_and_billing": "Good",
+      "starters_and_grills": "Excellent",
+      "ambience_hygiene_overall": "Good",
+      "food_and_beverages_overall": "Excellent"
+    },
+    "summary": "I visited the Bangalore JP Nagar outlet for dinner with two other people (3 pax total). My <span style=\"color: green;\">overall experience was excellent</span> and I had no issues at all. I found the <span style=\"color: green;\">taste of the starters and the buffet to be very good and excellent</span>. The <span style=\"color: green;\">cocktails we ordered were also very good</span>. The <span style=\"color: green;\">service, ambience, and hygiene were all good</span>, and I had a <span style=\"color: green;\">smooth booking and billing experience</span>. I didn't try the kulfi during this visit, but I would definitely recommend the Big Buffet concept to others.",
+    "translatedTranscript": "**Staff:** Hello.\n\n**Customer:** Hello?\n\n**Staff:** Sir, I am Anshika calling from the Barbeque Nation Head Office, sir.\n\n**Customer:** From?\n\n**Staff:** Barbeque Nation Head Office, sir.\n\n**Customer:** Yeah, tell me.\n\n**Staff:** Sir, yesterday you have visited to the Bangalore JP Nagar outlet for your dinner, sir?\n\n**Customer:** Yes, JP Nagar, that's right.\n\n**Staff:** Sir, this is a feedback call and the call will be recorded for our quality purpose.\n\n**Customer:** Okay.\n\n**Staff:** Sir, how was your overall experience there?\n\n**Customer:** Yeah, it was <span style=\"color: green;\">excellent</span>. No issues, everything was good.\n\n**Staff:** Okay, and sir, the everything includes the taste of the starter and buffet also?\n\n**Customer:** Yes, it was very good, <span style=\"color: green;\">excellent</span>.\n\n**Staff:** Okay, and how was the services, ambience, and hygiene?\n\n**Customer:** What was that?\n\n**Staff:** Sir, how was the services, ambience, and hygiene?\n\n**Customer:** Yeah, yeah, it was all good. Everything was good, no issues.\n\n**Staff:** Okay, and sir, the everything also includes the booking and billing experience?\n\n**Customer:** Yes, yes.\n\n**Staff:** Okay, and sir, with how many people you have visited there?\n\n**Customer:** We were three.\n\n**Staff:** Okay, and how was the drinks there, sir?\n\n**Customer:** Drinks, means we had some cocktails. It was also good, no issues. It was very good, yeah.\n\n**Staff:** Okay, and how was the kulfi there, sir?\n\n**Customer:** Kulfi I didn't try.\n\n**Staff:** Okay, and sir, will you recommend the Big Buffet concept to your friends and family?\n\n**Customer:** Yes, definitely.\n\n**Staff:** Okay, sir. Thank you so much for sharing the feedback, sir.\n\n**Customer:** Sure, thank you.\n\n**Staff:** Have a good day. Bye, sir.\n\n**Customer:** Thank you.",
+    "specialMentions": [
+      "The customer specifically mentioned that the cocktails were very good and they had no issues with them.",
+      "The customer highlighted that the taste of both the starters and the buffet was excellent."
+    ],
+    "issueTickets": []
+  },
+  {
+    "id": "sample-5",
+    "bookingId": "BJP-000000004196",
+    "outletId": "27",
+    "outletName": "BLR-JP NAGAR",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-06T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Good",
+      "hygiene": "Good",
+      "ambience": "Good",
+      "beverages": "Excellent",
+      "staff_and_service": "Good",
+      "buffet_main_course": "Good",
+      "booking_and_billing": "Excellent",
+      "starters_and_grills": "Good",
+      "ambience_hygiene_overall": "N/A",
+      "food_and_beverages_overall": "N/A"
+    },
+    "summary": "I visited the Barbeque Nation JP Nagar outlet for lunch with a group of about six people. <span style=\"color: green;\">My overall experience was really good</span> and I have no complaints. <span style=\"color: green;\">The starters and buffet were all nice</span>, and <span style=\"color: green;\">the service was good</span>. I found the <span style=\"color: green;\">booking and billing process to be very smooth</span>; even though I didn't use the app, the staff helped me book seamlessly over the phone. <span style=\"color: green;\">The Kulfi was nice</span> as well. Regarding beverages, we only had soft drinks, but <span style=\"color: green;\">the Guava Chilli juice was really awesome</span>. It was a <span style=\"color: green;\">pretty much a good lunch</span> and I don't have any suggestions for improvement.",
+    "translatedTranscript": "**Staff:** Hello?\n\n**Customer:** Hello.\n\n**Staff:** Yes.\n\n**Customer:** Yeah.\n\n**Staff:** Sir, I am Ambika calling from the Barbeque Nation Head Office, sir.\n\n**Customer:** Sorry, from where?\n\n**Staff:** Barbeque Nation Head Office, sir.\n\n**Customer:** Okay tell me, from JP Nagar?\n\n**Staff:** Sir, yesterday you have visited to the Bangalore JP Nagar outlet for your lunch, sir?\n\n**Customer:** Right.\n\n**Staff:** Sir, this is the feedback call and the call will be recorded for our quality purpose, sir.\n\n**Customer:** Uh-huh.\n\n**Staff:** Sir, how was your overall experience there?\n\n**Customer:** Uh, yeah, it was\u2014it was really good.\n\n**Staff:** Okay, and how was the starter and buffet, sir?\n\n**Customer:** Yeah, all nice, no\u2014no complaints.\n\n**Staff:** Okay, and how was the services, ambience, and hygiene, sir?\n\n**Customer:** The service was good, the ambience...\n\n**Staff:** Okay, and how was the booking and billing experience, sir?\n\n**Customer:** Uh, yeah, it's all nice. I think I\u2014I got to know\u2014I booked it seamlessly over the phone and not through the app, but they were able to help me.\n\n**Staff:** Okay, sir. And sir, with how many people you have visited there?\n\n**Customer:** Uh, we were round about six\u2014six members.\n\n**Staff:** Okay, and how was the Kulfi there, sir?\n\n**Customer:** Sorry, Kulfi?\n\n**Staff:** Yes.\n\n**Customer:** Yeah, yeah, it was nice, it was nice.\n\n**Staff:** Okay, and how was the drinks there?\n\n**Customer:** Sorry, drinks?\n\n**Staff:** Yes.\n\n**Customer:** We had only soft drinks, but that was\u2014that was really nice. I think it's the\u2014the one Guava Chilli, there was one\u2014one juice which was really awesome.\n\n**Staff:** Okay, sir. And do you want to give any suggestion, sir?\n\n**Customer:** Uh, no, I think, yeah, it was just pretty much a good lunch. So, thank you for asking me for your JP Nagar visit.\n\n**Staff:** Okay, sir. And thank you so much for sharing the feedback, sir.\n\n**Customer:** Thank you.\n\n**Staff:** Have a good day, sir. Bye.\n\n**Customer:** You too.",
+    "specialMentions": [
+      "The Guava Chilli juice was described as really awesome.",
+      "The booking process was praised for being seamless over the phone with helpful staff assistance."
+    ],
+    "issueTickets": []
+  },
+  {
+    "id": "sample-6",
+    "bookingId": "BJP-000000004202",
+    "outletId": "27",
+    "outletName": "BLR-JP NAGAR",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-07T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Excellent",
+      "hygiene": "N/A",
+      "ambience": "N/A",
+      "beverages": "N/A",
+      "staff_and_service": "Good",
+      "buffet_main_course": "Good",
+      "booking_and_billing": "Good",
+      "starters_and_grills": "Good",
+      "ambience_hygiene_overall": "Good",
+      "food_and_beverages_overall": "N/A"
+    },
+    "summary": "I visited the JP Nagar outlet with one other person for lunch. My <span style=\"color: green;\">overall experience was excellent</span>. I found the <span style=\"color: green;\">starters and buffet to be good</span>, and the <span style=\"color: green;\">kulfi was very good</span>. The <span style=\"color: green;\">service, ambience, hygiene, and the booking and billing process were all good</span>. However, I felt that the <span style=\"color: red;\">variety of veg starters was quite limited</span> and there were fewer options available.",
+    "translatedTranscript": "**Staff:** Hello.\n\n**Customer:** Yes, hello.\n\n**Staff:** Sir, I am Anshika calling from the Barbeque Nation head office.\n\n**Customer:** Yeah, okay. Tell me.\n\n**Staff:** Sir, yesterday you visited the Bangalore JP Nagar outlet for your lunch?\n\n**Customer:** Yeah, ma'am.\n\n**Staff:** Sir, this is the feedback call and the call will be recorded for our quality purpose.\n\n**Customer:** Okay.\n\n**Staff:** Sir, how was your overall experience there?\n\n**Customer:** It's excellent, ma'am.\n\n**Staff:** Okay. And how was the starters and buffet?\n\n**Customer:** That's good, ma'am.\n\n**Staff:** Okay. And how was the services, ambience, and hygiene, sir?\n\n**Customer:** Sorry?\n\n**Staff:** Sir, how was the services, ambience, and hygiene?\n\n**Customer:** Yeah, good, ma'am.\n\n**Staff:** Okay. And how was the booking and billing experience, sir?\n\n**Customer:** Yeah, good, ma'am.\n\n**Staff:** Okay. And sir, for how many people you have visited there?\n\n**Customer:** Yeah, two members, ma'am.\n\n**Staff:** Okay. And sir, with how... and how was the drinks there, sir?\n\n**Customer:** Drinks... actually I didn't take any drinks, ma'am.\n\n**Staff:** Okay. And how was the kulfi there, sir?\n\n**Customer:** Yeah, it's very good, ma'am.\n\n**Staff:** Okay, sir. And do you want to give any suggestion, sir?\n\n**Customer:** Yes, ma'am. Veg starters are less... what is it... veg starters are less, ma'am.\n\n**Staff:** Okay, sir. So the varieties was not there in the veg starters, right?\n\n**Customer:** Yeah, yeah, yeah, ma'am.\n\n**Staff:** Okay, I'm so sorry, sir.\n\n**Customer:** That's okay, ma'am. No problem.\n\n**Staff:** And thank you so much for sharing the feedback, sir.\n\n**Customer:** Thank you, thank you, ma'am.\n\n**Staff:** Have a good day. Bye, sir.\n\n**Customer:** Bye, ma'am.",
+    "specialMentions": [
+      "The kulfi was very good."
+    ],
+    "issueTickets": [
+      {
+        "id": "sample-6-ticket-1",
+        "ticketType": "Complaint",
+        "category": "Food & Beverage",
+        "subcategory": "Starters & Grills",
+        "severity": "Medium",
+        "description": "The customer complained that the variety of vegetarian starters was very limited/less."
+      }
+    ]
+  },
+  {
+    "id": "sample-7",
+    "bookingId": "BJP-000000004238",
+    "outletId": "27",
+    "outletName": "BLR-JP NAGAR",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-08T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Average",
+      "hygiene": "N/A",
+      "ambience": "N/A",
+      "beverages": "Excellent",
+      "staff_and_service": "Excellent",
+      "buffet_main_course": "Excellent",
+      "booking_and_billing": "Excellent",
+      "starters_and_grills": "Excellent",
+      "ambience_hygiene_overall": "Excellent",
+      "food_and_beverages_overall": "N/A"
+    },
+    "summary": "I visited the Bangalore JP Nagar outlet for dinner with my girlfriend (2 pax). My <span style=\"color: green;\">overall experience was excellent</span>. I found the <span style=\"color: green;\">starters and buffet to be excellent</span>, and the <span style=\"color: green;\">drinks were also excellent</span>. The <span style=\"color: green;\">services, ambience, and hygiene were very good</span>, and the <span style=\"color: green;\">booking and billing process was excellent</span>. However, the <span style=\"color: red;\">Kulfi was just average and could be better in terms of taste</span>. I don't have any other suggestions and told them to keep up the good work.",
+    "translatedTranscript": "**System Audio:** [Music playing: 'Tu Hi Samay Hai' from the movie 'Krrish 3']\n\n**Staff:** Hello?\n\n**Customer:** Hello.\n\n**Staff:** Hello, who is this?\n\n**Customer:** Sir, I am Ambika calling from the Barbeque Nation Head Office, sir.\n\n**Staff:** Yes, tell me.\n\n**Customer:** Sir, yesterday you have visited to the Bangalore JP Nagar outlet for your dinner, sir?\n\n**Staff:** Yes, yes.\n\n**Customer:** Sir, this is the feedback call and the call will be recorded for our quality purpose, sir.\n\n**Staff:** Okay, okay.\n\n**Customer:** How was your overall experience, sir?\n\n**Staff:** It was excellent.\n\n**Customer:** Okay, and how was the starter and buffet, sir?\n\n**Staff:** It was excellent, good.\n\n**Customer:** Okay, and how was the services, ambience, and hygiene, sir?\n\n**Staff:** It was very good, excellent.\n\n**Customer:** Okay, and how was the booking and billing experience, sir?\n\n**Staff:** Excellent.\n\n**Customer:** Okay, and how was the Kulfi there, sir?\n\n**Staff:** Good enough, could be better.\n\n**Customer:** Sir, in which terms it could be better? In taste, variety, or in the quality?\n\n**Staff:** Yes, in taste actually.\n\n**Customer:** Okay, okay, I'm sorry for that, sir.\n\n**Staff:** No, not sorry, but yeah, it was kind of average, so yeah.\n\n**Customer:** Okay, sir. And how was the booking and billing experience, sir?\n\n**Staff:** It was excellent.\n\n**Customer:** Okay, and how was the drinks there, sir?\n\n**Staff:** Good, good, excellent.\n\n**Customer:** Okay, and with how many people you have visited there?\n\n**Staff:** Just me and my girlfriend, two people.\n\n**Customer:** Okay, and do you want to give any suggestion, sir?\n\n**Staff:** No, no suggestion as of now. Keep on doing what you are doing. Thank you.\n\n**Customer:** Okay, sir. And thank you so much for sharing the feedback, sir.\n\n**Staff:** Yes.\n\n**Customer:** Okay, sir, have a good day then.",
+    "specialMentions": null,
+    "issueTickets": [
+      {
+        "id": "sample-7-ticket-1",
+        "ticketType": "Complaint",
+        "category": "Food & Beverage",
+        "subcategory": "Kulfi",
+        "severity": "Medium",
+        "description": "The customer mentioned that the Kulfi was average and its taste could be improved."
+      }
+    ]
+  },
+  {
+    "id": "sample-8",
+    "bookingId": "BLG-000000006280",
+    "outletId": "685",
+    "outletName": "BLR-LULU GLOBAL MALL",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-09T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Good",
+      "hygiene": "N/A",
+      "ambience": "N/A",
+      "beverages": "Good",
+      "staff_and_service": "Good",
+      "buffet_main_course": "N/A",
+      "booking_and_billing": "Good",
+      "starters_and_grills": "N/A",
+      "ambience_hygiene_overall": "Good",
+      "food_and_beverages_overall": "Good"
+    },
+    "summary": "I visited the Lulu Global Mall outlet in Bangalore for dinner with one other person. <span style=\"color: green;\">My overall experience was really good.</span> I found the <span style=\"color: green;\">food, including the starters and buffet, to be good.</span> The <span style=\"color: green;\">service provided by the staff, along with the ambience and hygiene, was also good.</span> Additionally, I had a <span style=\"color: green;\">positive booking experience</span> and <span style=\"color: green;\">enjoyed the drinks and kulfi.</span>",
+    "translatedTranscript": "**Staff:** Hello, good afternoon. I am Tanu calling from Barbeque Nation Head Office.\n\n**Customer:** Okay.\n\n**Staff:** Ma'am, yesterday you have been to Bangalore Lulu Global Mall outlet for your dinner?\n\n**Customer:** Yeah.\n\n**Staff:** This is a feedback call and the call will be recorded for improvement purposes. So how was your overall experience yesterday?\n\n**Customer:** It was really good.\n\n**Staff:** Okay, how was the food, starters and buffet?\n\n**Customer:** [inaudible] It was good.\n\n**Staff:** Sorry?\n\n**Staff:** Ma'am, how was the food, starters and buffet?\n\n**Customer:** It was good.\n\n**Staff:** Okay, how was the service by the staff, ambience and hygiene of the restaurant?\n\n**Customer:** Overall, the all experience was good.\n\n**Staff:** Okay ma'am, all including your booking experience also?\n\n**Customer:** Um, yeah.\n\n**Staff:** And how many members you have dined yesterday?\n\n**Customer:** Two of us.\n\n**Staff:** Okay, and how was the drinks and kulfi ma'am?\n\n**Customer:** It was good.\n\n**Staff:** Okay ma'am, any further suggestions?\n\n**Customer:** No, no.\n\n**Staff:** Okay ma'am, thank you for your valuable feedback and time. Have a nice day.\n\n**Customer:** Thank you.",
+    "specialMentions": null,
+    "issueTickets": []
+  },
+  {
+    "id": "sample-9",
+    "bookingId": "BLG-000000006273",
+    "outletId": "685",
+    "outletName": "BLR-LULU GLOBAL MALL",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-10T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Good",
+      "hygiene": "N/A",
+      "ambience": "N/A",
+      "beverages": "Good",
+      "staff_and_service": "Excellent",
+      "buffet_main_course": "N/A",
+      "booking_and_billing": "Excellent",
+      "starters_and_grills": "N/A",
+      "ambience_hygiene_overall": "Excellent",
+      "food_and_beverages_overall": "Good"
+    },
+    "summary": "I visited the Bangalore Lulu Global Mall outlet for dinner with one other person. My <span style=\"color: green;\">overall experience was nice</span> and I felt that <span style=\"color: green;\">everything was top notch</span>. The <span style=\"color: green;\">food, including the starters and buffet, was all nice</span>. I found the <span style=\"color: green;\">service by the staff and the ambience and hygiene to be up to the mark</span> with no issues. My <span style=\"color: green;\">booking experience was seamless</span> and the <span style=\"color: green;\">drinks and kulfi were also nice</span>. I didn't have any complaints or further suggestions to provide.",
+    "translatedTranscript": "**Staff:** Hello?\n\n**Customer:** Yes, hello.\n\n**Staff:** Good afternoon, sir. I'm Tanu calling from Barbeque Nation Head Office.\n\n**Customer:** Yes, ma'am.\n\n**Staff:** Sir, yesterday you had been to Bangalore Lulu Global Mall outlet for your dinner?\n\n**Customer:** Yes, ma'am.\n\n**Staff:** This is a feedback call and the call will be recorded for improvement purposes, sir. How was your overall experience yesterday?\n\n**Customer:** It was nice.\n\n**Staff:** Okay. How was the food, starters, and buffet?\n\n**Customer:** Everything was nice.\n\n**Staff:** Okay. How about the service by the staff and the ambient hygiene also?\n\n**Customer:** Yes, ma'am, everything was nice, up to the mark, no problem.\n\n**Staff:** Okay. And how many members you have dined yesterday?\n\n**Customer:** We were two people.\n\n**Staff:** So how was your booking experience?\n\n**Customer:** It was seamless, no problem.\n\n**Staff:** Okay. And how was the drinks and kulfi, sir?\n\n**Customer:** It was also nice.\n\n**Staff:** Okay, sir. Any further suggestion?\n\n**Customer:** No, no, it was... everything was top notch, no problem.\n\n**Staff:** Okay, sir. Okay, sir. Thank you, sir, for your valuable feedback and time. Have a nice day.\n\n**Customer:** Thanks, sir.",
+    "specialMentions": null,
+    "issueTickets": []
+  },
+  {
+    "id": "sample-10",
+    "bookingId": "BLG-000000006240",
+    "outletId": "685",
+    "outletName": "BLR-LULU GLOBAL MALL",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-11T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Excellent",
+      "hygiene": "N/A",
+      "ambience": "N/A",
+      "beverages": "N/A",
+      "staff_and_service": "Excellent",
+      "buffet_main_course": "N/A",
+      "booking_and_billing": "Excellent",
+      "starters_and_grills": "N/A",
+      "ambience_hygiene_overall": "Excellent",
+      "food_and_beverages_overall": "Excellent"
+    },
+    "summary": "I visited the Bangalore Lulu Global Mall outlet for lunch yesterday with a group of three members. My <span style=\"color: green;\">overall experience was fantastic</span>. I found the <span style=\"color: green;\">food, including the starters and buffet, to be superb</span>. The <span style=\"color: green;\">service provided by the staff, as well as the ambience and hygiene, were all superb</span>. I also had a <span style=\"color: green;\">good booking experience</span>. While I didn't try the drinks, the <span style=\"color: green;\">kulfi was fantastic</span>. I have no further suggestions to provide.",
+    "translatedTranscript": "**Other:** [Background chatter and noise]\n\n**Staff:** Hello?\n\n**Customer:** Hello?\n\n**Staff:** Hello?\n\n**Customer:** Hello?\n\n**Staff:** Hello, good evening sir. I am Tanu calling from Barbeque Nation Head Office.\n\n**Customer:** Yes, tell me.\n\n**Staff:** Sir, yesterday you had been to Bangalore Lulu Global Mall outlet for your lunch?\n\n**Customer:** Yes.\n\n**Staff:** This is a feedback call and the call will be recorded for improvement purposes. How was your overall experience yesterday?\n\n**Customer:** Fantastic.\n\n**Staff:** Thank you, sir. How was the food, starters, and buffet?\n\n**Customer:** Food was superb.\n\n**Staff:** Okay. How was the service by the staff, ambience, and hygiene of the restaurant?\n\n**Customer:** Superb, superb. All of them were superb.\n\n**Staff:** Yes, sir. So, all including your booking experience also?\n\n**Customer:** Yes, yes.\n\n**Staff:** And how many people you have visited yesterday?\n\n**Customer:** Three members.\n\n**Staff:** Okay. And how was the drinks and kulfi, sir?\n\n**Customer:** Kulfi was fantastic. Drinks we did not taste it.\n\n**Staff:** Okay, sir. Any further suggestion?\n\n**Customer:** Nothing, madam.\n\n**Staff:** Okay, sir. Thank you, sir, for your valuable feedback and time. Have a nice day.\n\n**Customer:** Okay, thank you.",
+    "specialMentions": null,
+    "issueTickets": []
+  },
+  {
+    "id": "sample-11",
+    "bookingId": "BLG-000000006260",
+    "outletId": "685",
+    "outletName": "BLR-LULU GLOBAL MALL",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-12T10:00:00.000Z",
+    "overallExperienceRating": "Good",
+    "csatScorecard": {
+      "kulfi": "Good",
+      "hygiene": "N/A",
+      "ambience": "N/A",
+      "beverages": "Good",
+      "staff_and_service": "Good",
+      "buffet_main_course": "Good",
+      "booking_and_billing": "Good",
+      "starters_and_grills": "Good",
+      "ambience_hygiene_overall": "Good",
+      "food_and_beverages_overall": "Good"
+    },
+    "summary": "I visited the Barbeque Nation outlet at Lulu Global Mall, Bangalore, for dinner yesterday with one other person. <span style=\"color: green;\">My overall experience was good.</span> I found the <span style=\"color: green;\">food, including the starters and the buffet, to be good.</span> The <span style=\"color: green;\">staff provided good service, and the restaurant maintained a good level of ambience and hygiene.</span> My <span style=\"color: green;\">booking experience was smooth,</span> and I also <span style=\"color: green;\">enjoyed the drinks and the kulfi.</span> I didn't have any complaints or further suggestions to share.",
+    "translatedTranscript": "**System Audio:** The person you have called is speaking to someone else. You can wait or call again later. Neevu kare maduttiruva vyaktiyu mattondu kareyalli karyanirataragiddare. Dayavittu kaayiri athava swalpa samayada nantara kare madi.\n\n**Staff:** Hello?\n\n**Customer:** Hello?\n\n**Staff:** Yeah, hi. Who is this?\n\n**Staff:** Good afternoon, sir. I'm Tanu calling from Barbeque Nation Head Office.\n\n**Customer:** Okay.\n\n**Staff:** Sir, yesterday you have been to Bangalore Lulu Global Mall outlet for your dinner?\n\n**Customer:** Yeah.\n\n**Staff:** This is a feedback call and the call will be recorded for improvement purposes. How was your overall experience yesterday?\n\n**Customer:** It was good.\n\n**Staff:** Okay. How was the food, starters, and buffet?\n\n**Customer:** Everything was good.\n\n**Staff:** Okay, sir. Everything including service by the staff, ambience, and hygiene also?\n\n**Customer:** Yeah, they maintained everything.\n\n**Staff:** And how many members you have dined yesterday?\n\n**Customer:** Two members.\n\n**Staff:** Okay. So how was your booking experience?\n\n**Customer:** It was good.\n\n**Staff:** Okay. And how was the drinks and kulfi?\n\n**Customer:** Yeah, it was good.\n\n**Staff:** Okay, sir. Any further suggestion?\n\n**Customer:** No, no, no.\n\n**Staff:** Okay, sir. Thank you, sir, for your valuable feedback and time. Have a nice day.\n\n**Customer:** Okay, okay.",
+    "specialMentions": null,
+    "issueTickets": []
+  },
+  {
+    "id": "sample-12",
+    "bookingId": "SAR-000000003048",
+    "outletId": "403",
+    "outletName": "BLR-SARJAPUR",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-13T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Excellent",
+      "hygiene": "N/A",
+      "ambience": "Excellent",
+      "beverages": "Excellent",
+      "staff_and_service": "Excellent",
+      "buffet_main_course": "Excellent",
+      "booking_and_billing": "Good",
+      "starters_and_grills": "Excellent",
+      "ambience_hygiene_overall": "N/A",
+      "food_and_beverages_overall": "N/A"
+    },
+    "summary": "I visited the Sarjapur outlet for dinner with one other person. My <span style=\"color: green;\">overall experience was superb and excellent</span>. I found the <span style=\"color: green;\">starters and buffet to be superb</span>, and the <span style=\"color: green;\">drinks and kulfi were perfect</span>. The <span style=\"color: green;\">service and ambience were also fantastic</span>. Additionally, I had a <span style=\"color: green;\">very good booking experience</span> and I don't have any suggestions for improvement.",
+    "translatedTranscript": "**Staff:** Hello, good evening sir.\n\n**Customer:** Yeah, good evening. Who is this?\n\n**Staff:** I am Ayesha Sharma from Barbeque Nation Head Office. This is a feedback call. Call will be recorded for quality and training purposes. Yesterday you visited Sarjapur outlet for dinner sir?\n\n**Customer:** Yes, yes, yes.\n\n**Staff:** How was the overall experience about yesterday?\n\n**Customer:** Yeah, it was superb, excellent actually.\n\n**Staff:** Thank you. How was the starters and buffet?\n\n**Customer:** Yeah, it was superb.\n\n**Staff:** Thank you. Service and ambience also?\n\n**Customer:** Yeah, everything was like superb, fantastic.\n\n**Staff:** Thank you. How many members visited yesterday?\n\n**Customer:** Two actually.\n\n**Staff:** Okay. How was the booking experience?\n\n**Customer:** Yeah, it was very good.\n\n**Staff:** Thank you. Drinks and kulfi also?\n\n**Customer:** Yeah, everything was perfect.\n\n**Staff:** Thank you. Any suggestion?\n\n**Customer:** No, nothing.\n\n**Staff:** Okay sir, thank you for your valuable feedback. Have a great day.\n\n**Customer:** Thank you, Ayesha.",
+    "specialMentions": null,
+    "issueTickets": []
+  },
+  {
+    "id": "sample-13",
+    "bookingId": "SAR-000000003043",
+    "outletId": "403",
+    "outletName": "BLR-SARJAPUR",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-14T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Good",
+      "hygiene": "N/A",
+      "ambience": "Excellent",
+      "beverages": "Good",
+      "staff_and_service": "Excellent",
+      "buffet_main_course": "Excellent",
+      "booking_and_billing": "Good",
+      "starters_and_grills": "Excellent",
+      "ambience_hygiene_overall": "N/A",
+      "food_and_beverages_overall": "N/A"
+    },
+    "summary": "I visited the Sarjapur outlet for dinner yesterday with one other person (2 pax). My <span style=\"color: green;\">overall experience was excellent</span>. I found the <span style=\"color: green;\">starters and buffet to be excellent</span>, and the <span style=\"color: green;\">service and ambience were also excellent</span>. The <span style=\"color: green;\">booking experience was good</span>. I also <span style=\"color: green;\">enjoyed the drinks and kulfi</span>. I have no suggestions for improvement at this time.",
+    "translatedTranscript": "**System Audio:** [Music playing] Welcome to Barbeque Nation Head Office. This is a feedback call. Call will be recorded for quality and training purposes.\n\n**Staff:** Yesterday you had visited Sarjapur outlet for dinner, sir?\n\n**Customer:** Yeah, yes, yes.\n\n**Staff:** How was your overall experience about yesterday?\n\n**Customer:** Excellent, ma'am.\n\n**Staff:** Thank you. How was your starters and buffet?\n\n**Customer:** Excellent.\n\n**Staff:** Thank you. Service and ambience also?\n\n**Customer:** Excellent, ma'am.\n\n**Staff:** Thank you. How many members had come there yesterday?\n\n**Customer:** Two.\n\n**Staff:** Okay. How was the booking experience?\n\n**Customer:** It was good, ma'am.\n\n**Staff:** Including drinks and kulfi also?\n\n**Customer:** Yeah.\n\n**Staff:** Thank you. Any suggestions?\n\n**Customer:** No, ma'am, nothing.\n\n**Staff:** Okay. Thank you for your valuable feedback, sir. Have a great day.\n\n**Customer:** Thanks.",
+    "specialMentions": null,
+    "issueTickets": []
+  },
+  {
+    "id": "sample-14",
+    "bookingId": "SAR-000000003039",
+    "outletId": "403",
+    "outletName": "BLR-SARJAPUR",
+    "city": "BLR",
+    "region": "South",
+    "callDate": "2026-01-15T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Good",
+      "hygiene": "N/A",
+      "ambience": "Good",
+      "beverages": "Good",
+      "staff_and_service": "Good",
+      "buffet_main_course": "Good",
+      "booking_and_billing": "Good",
+      "starters_and_grills": "Good",
+      "ambience_hygiene_overall": "N/A",
+      "food_and_beverages_overall": "N/A"
+    },
+    "summary": "I visited the Sarjapur outlet for dinner yesterday with one other person. My <span style=\"color: green;\">overall experience was excellent</span>. I found the <span style=\"color: green;\">starters and buffet to be good</span>, and the <span style=\"color: green;\">service and ambience were also good</span>. The <span style=\"color: green;\">booking process was smooth</span>, and we <span style=\"color: green;\">enjoyed the drinks and kulfi</span> as well. I don't have any suggestions for improvement.",
+    "translatedTranscript": "**System Audio:** The person you have called is speaking to someone else. You can wait or call again later. [Regional language automated message repeats] \n\n**Staff:** Hello?\n\n**Customer:** Hello.\n\n**Staff:** Good evening, sir.\n\n**Customer:** Good evening.\n\n**Staff:** I am Akshata calling from Barbeque Nation Head Office. This is a feedback call. Call will be recorded for quality and training purpose. Yesterday you had been to Sarjapur outlet for dinner, sir?\n\n**Customer:** Yes, yes, I went.\n\n**Staff:** How was the overall experience about yesterday?\n\n**Customer:** Yeah, it was excellent.\n\n**Staff:** Okay, how was the starters and buffet?\n\n**Customer:** Everything was good.\n\n**Staff:** Thank you. Service and ambience also?\n\n**Customer:** Yeah, everything was good.\n\n**Staff:** Thank you. How many members visited yesterday?\n\n**Customer:** Two. Two members we visited.\n\n**Staff:** Okay. How was the booking experience?\n\n**Customer:** That also good.\n\n**Staff:** Thank you. Drinks and kulfi also?\n\n**Customer:** That also was good.\n\n**Staff:** Thank you. Any suggestion?\n\n**Customer:** Nothing, nothing. Thank you.\n\n**Staff:** Okay, thank you for your valuable feedback and have a great day.\n\n**Customer:** Thank you.",
+    "specialMentions": null,
+    "issueTickets": []
+  },
+  {
+    "id": "sample-15",
+    "bookingId": "DPM-000000004393",
+    "outletId": "692",
+    "outletName": "DEL-PACIFIC MALL D21",
+    "city": "DEL",
+    "region": "North",
+    "callDate": "2026-01-16T10:00:00.000Z",
+    "overallExperienceRating": "Good",
+    "csatScorecard": {
+      "kulfi": "N/A",
+      "hygiene": "N/A",
+      "ambience": "N/A",
+      "beverages": "N/A",
+      "staff_and_service": "Excellent",
+      "buffet_main_course": "Good",
+      "booking_and_billing": "Good",
+      "starters_and_grills": "Good",
+      "ambience_hygiene_overall": "Good",
+      "food_and_beverages_overall": "Good"
+    },
+    "summary": "I visited Barbeque Nation at Pacific Mall for dinner with two adults, a child, and a three-year-old. <span style=\"color: green;\">My overall experience was good and everything was perfect.</span> <span style=\"color: green;\">The service and ambience were good,</span> and <span style=\"color: green;\">the food, including the starters and buffet, was also good.</span> I had <span style=\"color: green;\">no problems with the booking or billing.</span> I have a suggestion that <span style=\"color: red;\">the fries would be better if salt was added to them.</span> I specifically want to <span style=\"color: green;\">commend Jaya, who served us food,</span> for her service.",
+    "translatedTranscript": "**Staff:** Hello. Good afternoon, Ma'am. I am calling from the Barbeque Nation Head Office. This is a feedback call recorded for improvement. You visited Pacific Mall, Ma'am, for dinner. How was your overall experience?\n\n**Customer:** Experience was good.\n\n**Staff:** Thank you. How did you find the service and ambience, Ma'am?\n\n**Customer:** Hmm, everything was good, perfect.\n\n**Staff:** And the starters and buffet, Ma'am?\n\n**Customer:** Sorry?\n\n**Staff:** Food... how did you find the starters and buffet, Ma'am?\n\n**Customer:** Food was also good.\n\n**Staff:** And your booking and billing experience? Did you face any problems?\n\n**Customer:** No, no, no problem.\n\n**Staff:** And how many people were you?\n\n**Customer:** We were two adults plus one kid, and one smaller child who was free of cost, a three-year-old child.\n\n**Staff:** Okay, Ma'am. And any suggestions, Ma'am?\n\n**Customer:** Uh, I don't have any such suggestions, but yes, <span style=\"color: red;\">in the fries, if you add salt, it will be better.</span>\n\n**Staff:** Okay, Ma'am, I will forward this to my team. And thank you for your feedback. Have a nice day, Ma'am.\n\n**Customer:** Wait, wait, wait. I want to mention the name of the person who was serving us food: Jaya.\n\n**Staff:** Jaya?\n\n**Customer:** Yes, Jaya.\n\n**Staff:** Okay, Ma'am, I will mention her name. And have a nice day, Ma'am.\n\n**Customer:** Thank you.",
+    "specialMentions": [
+      "Jaya provided great service while serving the customer food."
+    ],
+    "issueTickets": [
+      {
+        "id": "sample-15-ticket-1",
+        "ticketType": "Suggestion",
+        "category": "Food & Beverage",
+        "subcategory": "Starters & Grills",
+        "severity": "Low",
+        "description": "The customer suggested adding salt to the fries to improve the taste."
+      }
+    ]
+  },
+  {
+    "id": "sample-16",
+    "bookingId": "DPM-000000004388",
+    "outletId": "692",
+    "outletName": "DEL-PACIFIC MALL D21",
+    "city": "DEL",
+    "region": "North",
+    "callDate": "2026-01-17T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "N/A",
+      "hygiene": "N/A",
+      "ambience": "N/A",
+      "beverages": "N/A",
+      "staff_and_service": "N/A",
+      "buffet_main_course": "N/A",
+      "booking_and_billing": "N/A",
+      "starters_and_grills": "N/A",
+      "ambience_hygiene_overall": "N/A",
+      "food_and_beverages_overall": "N/A"
+    },
+    "summary": "I recently visited the Barbeque Nation outlet at Pacific Mall for lunch. My <span style=\"color: green;\">overall experience was very good</span>. The staff called me to follow up, and I confirmed that I enjoyed my visit.",
+    "translatedTranscript": "**System Audio:** [Dial tone ringing] \n\n**Staff:** Hello?\n\n**Customer:** Hello.\n\n**Staff:** Hello, good afternoon sir. I am calling from the head office of Barbeque Nation. \n\n**Customer:** Yes.\n\n**Staff:** Sir, you recently visited Pacific Mall for lunch. How was your overall experience?\n\n**Customer:** Very good.\n\n**Staff:** Thank you. How did you find the service and the ambience, sir?\n\n**Customer:** [Audio cuts out]",
+    "specialMentions": null,
+    "issueTickets": []
+  },
+  {
+    "id": "sample-17",
+    "bookingId": "RHN-000000004343",
+    "outletId": "302",
+    "outletName": "DEL-ROHINI",
+    "city": "DEL",
+    "region": "North",
+    "callDate": "2026-01-18T10:00:00.000Z",
+    "overallExperienceRating": "Excellent",
+    "csatScorecard": {
+      "kulfi": "Good",
+      "hygiene": "N/A",
+      "ambience": "Good",
+      "beverages": "Good",
+      "staff_and_service": "Excellent",
+      "buffet_main_course": "Good",
+      "booking_and_billing": "Excellent",
+      "starters_and_grills": "Good",
+      "ambience_hygiene_overall": "Good",
+      "food_and_beverages_overall": "Good"
+    },
+    "summary": "I visited the Rohini outlet for lunch with a group of about 7 to 8 people. <span style=\"color: green;\">My overall experience was very good</span> as <span style=\"color: green;\">the service and food were both good</span>. I appreciated that <span style=\"color: green;\">they prepared everything exactly according to our preferences</span>. The <span style=\"color: green;\">starters, buffet, and ambience were all okay</span>, and I found the <span style=\"color: green;\">kulfi and drinks to be fine</span> as well. <span style=\"color: green;\">The booking process was smooth and the pricing felt right</span>. I want to <span style=\"color: green;\">specially mention Ravi, who served us; he managed everything very well and took great care of our table</span>.",
+    "translatedTranscript": "**Staff:** Hello?\n\n**Customer:** Hello?\n\n**Staff:** Hello?\n\n**Customer:** Yes, tell me.\n\n**Staff:** Hello, good evening sir. I am Kavita Pathak calling from the Barbeque Nation Head Office. This is a small feedback call and this call is being recorded for our improvement purposes. Sir, yesterday you visited Barbeque Nation Rohini for lunch?\n\n**Customer:** Yes, ma'am.\n\n**Staff:** Yes sir. Am I speaking with Mr. Dhan Sagar Sagar ji?\n\n**Customer:** Yes, yes. Tell me.\n\n**Staff:** Yes sir. May I know how your overall experience was, sir?\n\n**Customer:** It was very good, ma'am. The service was also good, the food was also good, and they gave us everything exactly as we asked. It was right.\n\n**Staff:** Thank you, sir. And was the food good in both starters and buffet?\n\n**Customer:** Everything was okay, ma'am.\n\n**Staff:** Everything was okay, including the ambience?\n\n**Customer:** Yes, everything was okay, right ma'am.\n\n**Staff:** Ambience? All right sir. And did you try the kulfi and drinks? How were the kulfi and drinks?\n\n**Customer:** Yes, it was fine, ma'am. It was okay.\n\n**Staff:** Okay. And how was the booking experience?\n\n**Customer:** The booking experience was also right, everything was great rate-wise.\n\n**Staff:** All right sir. How many members had you gone with?\n\n**Customer:** We were... maybe seven or eight people went in total.\n\n**Staff:** All right sir. Would you like to give any suggestions?\n\n**Customer:** No ma'am. It was fine, it was good.\n\n**Staff:** Thank you sir. And also sir, thank you for your valuable feedback and time. Have a good day sir.\n\n**Customer:** Yes, okay ma'am. And there was a Ravi ji, who was serving etc. Ravi was his name probably. He looked after us very well there, whatever was there. He did the management very well.\n\n**Staff:** Yeah, thank you sir for the appreciation for Mr. Ravi. I will definitely mention your appreciation.\n\n**Customer:** Okay right ma'am, thank you.\n\n**Staff:** Thank you so much. And also sir, thank you for your valuable feedback and time. Have a good day sir.\n\n**Customer:** Okay, bye-bye.\n\n**Staff:** Bye-bye.",
+    "specialMentions": [
+      "Ravi provided exceptional service, managed the table very well, and ensured all our requirements were met."
+    ],
+    "issueTickets": []
+  },
+  {
+    "id": "sample-18",
+    "bookingId": "RHN-000000004342",
+    "outletId": "302",
+    "outletName": "DEL-ROHINI",
+    "city": "DEL",
+    "region": "North",
+    "callDate": "2026-01-19T10:00:00.000Z",
+    "overallExperienceRating": "Average",
+    "csatScorecard": {
+      "kulfi": "Poor",
+      "hygiene": "N/A",
+      "ambience": "Good",
+      "beverages": "Poor",
+      "staff_and_service": "Good",
+      "buffet_main_course": "Good",
+      "booking_and_billing": "Poor",
+      "starters_and_grills": "Good",
+      "ambience_hygiene_overall": "Good",
+      "food_and_beverages_overall": "Good"
+    },
+    "summary": "I visited the Rohini outlet with a group of five people for lunch. My <span style=\"color: red;\">overall experience was just okay</span> because <span style=\"color: red;\">I was charged more than the MRP for a cold drink can</span>. While the <span style=\"color: green;\">food taste was good</span>, the <span style=\"color: red;\">kulfi and other drinks were not served to us</span> during our visit. The service and ambience were fine, and I didn't face any issues with the booking process itself, but the <span style=\"color: red;\">overcharging on the beverage</span> was a significant concern for me.",
+    "translatedTranscript": "**Staff:** Hello?\n\n**Customer:** Hello.\n\n**Staff:** Hello, good evening sir. This is Kavita calling from Barbeque Nation Head Office. This is a short feedback call. The call will be recorded for our improvement. Sir, yesterday you had been to Rohini Barbeque Nation for lunch. Is this Mr. Tanish?\n\n**Customer:** Yes, ma'am.\n\n**Staff:** Yes sir. May I know how was the overall experience there?\n\n**Customer:** Ma'am, the overall experience was okay, but the cold drink can I took there...\n\n**Staff:** Cold drink?\n\n**Customer:** Yes, I took a cold drink can, a can.\n\n**Staff:** Yes.\n\n**Customer:** So, they charged me more than the MRP price for it.\n\n**Staff:** Okay, I will definitely forward this matter, sir. Sorry for that part, sir. I will forward this to the concerned team. But how was the food taste, starters, and buffet, sir?\n\n**Customer:** Ma'am, the taste was good.\n\n**Staff:** Okay sir. And how was the service and environment of the restaurant, sir?\n\n**Customer:** Ma'am, the service was also okay.\n\n**Staff:** Okay sir. And how was the ambience, sir?\n\n**Customer:** Ambience was also okay.\n\n**Staff:** Okay sir. Did you try any drinks or kulfi? How were the kulfi and drinks, sir?\n\n**Customer:** What ma'am?\n\n**Staff:** Did you try the drinks and kulfi? How were the kulfi and drinks, sir?\n\n**Customer:** No ma'am, those were not served to us.\n\n**Staff:** Okay. The drinks you tried, you only took the drinks?\n\n**Customer:** I took a cold drink can.\n\n**Staff:** Okay sir. All right sir. And you didn't try the kulfi?\n\n**Customer:** No ma'am.\n\n**Staff:** Okay sir. How were the drinks, sir? Was there any issue with the drinks?\n\n**Customer:** No ma'am.\n\n**Staff:** Okay sir. How was the booking experience? Was there any issue with the booking, sir?\n\n**Customer:** They charged over the price.\n\n**Staff:** Okay, that was the only issue. I will definitely forward this matter, sir. Sorry for that part, sir. Otherwise, how many members were you?\n\n**Customer:** Ma'am, five members.\n\n**Staff:** All right. And there was no issue with the booking, sir?\n\n**Customer:** No ma'am.\n\n**Staff:** All right. Any other suggestions you would like to give?\n\n**Customer:** No ma'am.\n\n**Staff:** Okay sir. Regarding the drinks, I will definitely forward it to the concerned team. Sorry for that part, sir. And also, sir, thank you for your valuable feedback and time. Have a good day, sir. Bye-bye.\n\n**Customer:** Thank you.",
+    "specialMentions": null,
+    "issueTickets": [
+      {
+        "id": "sample-18-ticket-1",
+        "ticketType": "Complaint",
+        "category": "Booking & Billing",
+        "subcategory": "Billing & Pricing",
+        "severity": "High",
+        "description": "The customer complained that the restaurant charged him a price higher than the MRP for a cold drink can."
+      },
+      {
+        "id": "sample-18-ticket-2",
+        "ticketType": "Complaint",
+        "category": "Staff & Service",
+        "subcategory": "Service",
+        "severity": "Medium",
+        "description": "The customer mentioned that kulfi and other drinks were not served to their table during the meal."
+      }
+    ]
+  }
+]
