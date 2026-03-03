@@ -2,7 +2,7 @@
 
 import type { Route } from 'next';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   AlertCircle,
   ArrowLeft,
@@ -40,27 +40,27 @@ const scorecardGroups: Array<{
   parent: keyof CsatScorecard;
   subs: Array<keyof CsatScorecard>;
 }> = [
-  {
-    label: 'Ambience & Hygiene',
-    parent: 'ambience_hygiene_overall',
-    subs: ['ambience', 'hygiene'],
-  },
-  {
-    label: 'Food & Beverages',
-    parent: 'food_and_beverages_overall',
-    subs: ['beverages', 'buffet_main_course', 'starters_and_grills', 'kulfi'],
-  },
-  {
-    label: 'Booking & Billing',
-    parent: 'booking_and_billing',
-    subs: [],
-  },
-  {
-    label: 'Staff & Service',
-    parent: 'staff_and_service',
-    subs: [],
-  },
-];
+    {
+      label: 'Ambience & Hygiene',
+      parent: 'ambience_hygiene_overall',
+      subs: ['ambience', 'hygiene'],
+    },
+    {
+      label: 'Food & Beverages',
+      parent: 'food_and_beverages_overall',
+      subs: ['beverages', 'buffet_main_course', 'starters_and_grills', 'kulfi'],
+    },
+    {
+      label: 'Booking & Billing',
+      parent: 'booking_and_billing',
+      subs: [],
+    },
+    {
+      label: 'Staff & Service',
+      parent: 'staff_and_service',
+      subs: [],
+    },
+  ];
 
 const ratingIndicatorClasses: Record<Rating, string> = {
   Excellent: 'text-emerald-600 bg-emerald-50 border-emerald-100',
@@ -171,6 +171,10 @@ const ScoreIndicator = ({ rating }: { rating: Rating }) => (
 
 export const FeedbackDetailPage = ({ feedbackId }: FeedbackDetailPageProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const progressBarRef = useRef<HTMLDivElement | null>(null);
   const detailQuery = useFeedbackDetail(feedbackId, true);
 
   const feedback = detailQuery.data ?? null;
@@ -178,6 +182,79 @@ export const FeedbackDetailPage = ({ feedbackId }: FeedbackDetailPageProps) => {
   const transcriptEntries = useMemo(() => {
     return parseTranscriptEntries(feedback?.translatedTranscript ?? null);
   }, [feedback?.translatedTranscript]);
+
+  // Clean up audio on unmount
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  // Reset audio when feedback changes
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    setIsPlaying(false);
+    setCurrentTime(0);
+    setDuration(0);
+  }, [feedbackId]);
+
+  const ensureAudio = useCallback(() => {
+    if (audioRef.current || !feedback?.recordingUrl) return audioRef.current;
+    const audio = new Audio(feedback.recordingUrl);
+    audio.addEventListener('loadedmetadata', () => setDuration(audio.duration));
+    audio.addEventListener('timeupdate', () => setCurrentTime(audio.currentTime));
+    audio.addEventListener('ended', () => {
+      setIsPlaying(false);
+      setCurrentTime(0);
+    });
+    audio.addEventListener('error', () => {
+      setIsPlaying(false);
+    });
+    audioRef.current = audio;
+    return audio;
+  }, [feedback?.recordingUrl]);
+
+  const togglePlay = useCallback(() => {
+    const audio = ensureAudio();
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.play().catch(() => setIsPlaying(false));
+      setIsPlaying(true);
+    }
+  }, [ensureAudio, isPlaying]);
+
+  const handleSeek = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const audio = audioRef.current;
+      const bar = progressBarRef.current;
+      if (!audio || !bar || !duration) return;
+
+      const rect = bar.getBoundingClientRect();
+      const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      audio.currentTime = ratio * duration;
+      setCurrentTime(audio.currentTime);
+    },
+    [duration],
+  );
+
+  const formatTime = (seconds: number) => {
+    if (!seconds || !isFinite(seconds)) return '00:00';
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
+
+  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   const handleDownloadCsv = () => {
     if (!feedback) {
@@ -221,14 +298,14 @@ export const FeedbackDetailPage = ({ feedbackId }: FeedbackDetailPageProps) => {
     const rows =
       feedback.issueTickets.length > 0
         ? feedback.issueTickets.map((ticket) => [
-            ...baseRow,
-            ticket.id,
-            ticket.ticketType,
-            ticket.category,
-            ticket.subcategory,
-            ticket.severity,
-            ticket.description,
-          ])
+          ...baseRow,
+          ticket.id,
+          ticket.ticketType,
+          ticket.category,
+          ticket.subcategory,
+          ticket.severity,
+          ticket.description,
+        ])
         : [[...baseRow, '', '', '', '', '', '']];
 
     downloadCsv(`feedback-detail-${feedback.bookingId}.csv`, headers, rows);
@@ -268,9 +345,9 @@ export const FeedbackDetailPage = ({ feedbackId }: FeedbackDetailPageProps) => {
                   <Calendar className="h-3.5 w-3.5" />
                   {feedback
                     ? new Date(feedback.callDate).toLocaleString(undefined, {
-                        dateStyle: 'medium',
-                        timeStyle: 'short',
-                      })
+                      dateStyle: 'medium',
+                      timeStyle: 'short',
+                    })
                     : '--'}
                 </p>
 
@@ -506,34 +583,55 @@ export const FeedbackDetailPage = ({ feedbackId }: FeedbackDetailPageProps) => {
               </div>
             </section>
 
-            <section className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <div className="flex items-center gap-5">
-                <button
-                  type="button"
-                  onClick={() => setIsPlaying((previous) => !previous)}
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-700 text-white transition-all hover:bg-slate-600"
-                  aria-label={isPlaying ? 'Pause recording' : 'Play recording'}
-                >
-                  {isPlaying ? (
-                    <Pause className="h-5 w-5 fill-current" />
-                  ) : (
-                    <Play className="ml-0.5 h-5 w-5 fill-current" />
-                  )}
-                </button>
+            {feedback.recordingUrl ? (
+              <section className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                <div className="flex items-center gap-5">
+                  <button
+                    type="button"
+                    onClick={togglePlay}
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-700 text-white transition-all hover:bg-slate-600 active:scale-95"
+                    aria-label={isPlaying ? 'Pause recording' : 'Play recording'}
+                  >
+                    {isPlaying ? (
+                      <Pause className="h-5 w-5 fill-current" />
+                    ) : (
+                      <Play className="ml-0.5 h-5 w-5 fill-current" />
+                    )}
+                  </button>
 
-                <div className="min-w-0 flex-1">
-                  <div className="mb-2 flex items-center justify-between gap-2">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                      Call Recording
-                    </p>
-                    <p className="font-mono text-[10px] font-bold text-slate-500">01:24 / 03:45</p>
-                  </div>
-                  <div className="h-1.5 overflow-hidden rounded-full bg-slate-200">
-                    <div className="h-full w-[35%] rounded-full bg-slate-500" />
+                  <div className="min-w-0 flex-1">
+                    <div className="mb-2 flex items-center justify-between gap-2">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                        Call Recording
+                      </p>
+                      <p className="font-mono text-[10px] font-bold text-slate-500">
+                        {formatTime(currentTime)} / {formatTime(duration)}
+                      </p>
+                    </div>
+                    <div
+                      ref={progressBarRef}
+                      role="progressbar"
+                      aria-valuenow={Math.round(progress)}
+                      aria-valuemin={0}
+                      aria-valuemax={100}
+                      className="h-1.5 cursor-pointer overflow-hidden rounded-full bg-slate-200 transition-all hover:h-2.5"
+                      onClick={handleSeek}
+                    >
+                      <div
+                        className="h-full rounded-full bg-slate-500 transition-[width] duration-200"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
+              </section>
+            ) : (
+              <section className="rounded-2xl border border-dashed border-slate-200 bg-slate-50/50 p-6">
+                <p className="text-center text-xs font-medium text-slate-400">
+                  No call recording available
+                </p>
+              </section>
+            )}
           </div>
         </div>
       ) : null}

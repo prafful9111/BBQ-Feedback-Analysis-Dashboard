@@ -26,6 +26,7 @@ import { FeedbackTableFilters } from '@/shared/components/filters/feedback-table
 import { Pagination } from '@/shared/components/ui/pagination';
 import { cn } from '@/shared/lib/cn';
 import { downloadCsv } from '@/shared/lib/csv';
+import { useOutletOptions } from '@/shared/hooks/use-outlet-options';
 import type { FeedbackListItem, IssueCategory, Rating } from '@/shared/types/feedback';
 
 interface CategoryAnalysisPageProps {
@@ -97,6 +98,7 @@ export const CategoryAnalysisPage = ({ categorySlug }: CategoryAnalysisPageProps
   const [isExporting, setIsExporting] = useState(false);
 
   const categoryQuery = useCategoryRecords(categoryName, filters);
+  const outletOptionsQuery = useOutletOptions();
 
   const stats = useMemo(() => {
     if (!categoryQuery.data) {
@@ -260,6 +262,8 @@ export const CategoryAnalysisPage = ({ categorySlug }: CategoryAnalysisPageProps
           isLoading={categoryQuery.isPending}
           isExporting={isExporting}
           searchPlaceholder="Search by booking ID or outlet..."
+          outlets={outletOptionsQuery.data?.outlets}
+          regions={outletOptionsQuery.data?.regions}
         />
       </header>
 
@@ -276,7 +280,7 @@ export const CategoryAnalysisPage = ({ categorySlug }: CategoryAnalysisPageProps
 
       {categoryQuery.data && categoryQuery.data.items.length > 0 ? (
         <div className="flex-1 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-          <div className="h-full overflow-x-auto">
+          <div className="max-h-[calc(100vh-480px)] overflow-auto">
             <table className="min-w-[1220px] w-full border-collapse text-left">
               <thead className="sticky top-0 z-10 bg-white">
                 <tr className="border-b border-slate-100 bg-slate-50/50">

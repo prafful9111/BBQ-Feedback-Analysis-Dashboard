@@ -4,35 +4,42 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
-enum Rating {
-  EXCELLENT
-  GOOD
-  AVERAGE
-  POOR
-  NA
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model feedback_analysis {
+  id                        String          @id
+  outletId                  BigInt?
+  bookingId                 String?
+  recordingURL              String?
+  transcription             Json?
+  translation               Json?
+  translation_usage         Json?
+  audio_metadata            String?
+  is_processed              Boolean?
+  is_sent                   Boolean?
+  client_response           String?
+  created_at                DateTime?       @db.Timestamptz(6)
+  updated_at                DateTime?       @db.Timestamptz(6)
+  csat_scorecard            Json?
+  overall_experience_rating String?
+  special_mentions          String?
+  summary                   String?
+  transcript                String?
+  outletName                String?
+  issue_tickets             issue_tickets[]
 }
 
-model FeedbackRecord {
-  id                      String   @id @default(cuid())
-  bookingId               String   @unique
-  outletId                String
-  outletName              String
-  city                    String
-  region                  String
-  callDate                DateTime
-  overallExperienceRating Rating
-  summary                 String?
-  translatedTranscript    String?
-  specialMentions         String[]
-  csatScorecard           Json
-  issueTickets            Json
-  createdAt               DateTime @default(now())
-  updatedAt               DateTime @updatedAt
-
-  @@index([callDate])
-  @@index([outletId])
-  @@index([overallExperienceRating])
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model issue_tickets {
+  id                 String             @id
+  ticket_type        String?
+  category           String?
+  subcategory        String?
+  severity           String?
+  description        String?
+  created_at         DateTime?          @db.Timestamptz(6)
+  updated_at         DateTime?          @db.Timestamptz(6)
+  feedbackAnalysisId String?
+  feedback_analysis  feedback_analysis? @relation(fields: [feedbackAnalysisId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

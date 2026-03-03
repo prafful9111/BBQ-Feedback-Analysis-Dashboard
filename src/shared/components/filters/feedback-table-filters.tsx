@@ -1,6 +1,7 @@
 'use client';
 
-import { Calendar, Download, MapPin, Search, Star } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Calendar, ChevronDown, Download, MapPin, Search, Star, X } from 'lucide-react';
 
 import { OUTLET_OPTIONS } from '@/shared/constants/outlets';
 import {
@@ -33,6 +34,12 @@ interface FeedbackTableFiltersValue {
   page: number;
 }
 
+interface OutletOption {
+  id: string;
+  name: string;
+  region?: string;
+}
+
 interface FeedbackTableFiltersProps<T extends FeedbackTableFiltersValue> {
   value: T;
   onChange: (nextValue: T) => void;
@@ -40,7 +47,121 @@ interface FeedbackTableFiltersProps<T extends FeedbackTableFiltersValue> {
   isLoading?: boolean;
   isExporting?: boolean;
   searchPlaceholder?: string;
+  /** Dynamic outlet options from DB. Falls back to static OUTLET_OPTIONS if omitted. */
+  outlets?: OutletOption[];
+  /** Dynamic region options from DB. Falls back to static OUTLET_OPTIONS if omitted. */
+  regions?: string[];
 }
+
+/* ---- Inline searchable select for outlet filter ---- */
+
+const OutletSearchableSelect = ({
+  value,
+  options,
+  onChange,
+}: {
+  value: string;
+  options: Array<{ value: string; label: string }>;
+  onChange: (value: string) => void;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const selectedLabel = useMemo(
+    () => options.find((o) => o.value === value)?.label ?? value,
+    [options, value],
+  );
+
+  const filtered = useMemo(() => {
+    if (!query) return options;
+    const lower = query.toLowerCase();
+    return options.filter((o) => o.label.toLowerCase().includes(lower));
+  }, [options, query]);
+
+  useEffect(() => {
+    const handler = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+        setQuery('');
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative">
+      <button
+        type="button"
+        onClick={() => {
+          setIsOpen(!isOpen);
+          if (!isOpen) setTimeout(() => inputRef.current?.focus(), 50);
+          else setQuery('');
+        }}
+        className="flex h-10 w-full items-center gap-2 rounded-lg bg-slate-50 px-3 text-left text-sm font-medium text-slate-700 outline-none ring-2 ring-transparent transition-all hover:bg-white focus:ring-orange-500/20"
+      >
+        <Search className="h-4 w-4 shrink-0 text-slate-400" />
+        <span className="flex-1 truncate">{selectedLabel}</span>
+        {value !== 'All Outlets' ? (
+          <X
+            className="h-3.5 w-3.5 shrink-0 cursor-pointer text-slate-400 hover:text-slate-600"
+            onClick={(e) => {
+              e.stopPropagation();
+              onChange('All Outlets');
+              setIsOpen(false);
+              setQuery('');
+            }}
+          />
+        ) : (
+          <ChevronDown className={`h-3.5 w-3.5 shrink-0 text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        )}
+      </button>
+
+      {isOpen && (
+        <div className="absolute left-0 right-0 top-full z-50 mt-1 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg">
+          <div className="border-b border-slate-100 p-2">
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
+              <input
+                ref={inputRef}
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search outlets…"
+                className="h-8 w-full rounded-md border border-slate-200 bg-slate-50 pl-8 pr-3 text-xs font-medium text-slate-700 outline-none focus:border-orange-300 focus:bg-white"
+              />
+            </div>
+          </div>
+
+          <ul className="max-h-60 overflow-y-auto py-1">
+            {filtered.length === 0 ? (
+              <li className="px-3 py-2 text-xs text-slate-400">No outlets found</li>
+            ) : (
+              filtered.map((option) => (
+                <li key={option.value}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onChange(option.value);
+                      setIsOpen(false);
+                      setQuery('');
+                    }}
+                    className={`w-full px-3 py-2 text-left text-xs font-medium transition-colors hover:bg-orange-50 hover:text-orange-700 ${option.value === value ? 'bg-orange-50 text-orange-700' : 'text-slate-700'
+                      }`}
+                  >
+                    {option.label}
+                  </button>
+                </li>
+              ))
+            )}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const FeedbackTableFilters = <T extends FeedbackTableFiltersValue>({
   value,
@@ -49,18 +170,26 @@ export const FeedbackTableFilters = <T extends FeedbackTableFiltersValue>({
   isLoading = false,
   isExporting = false,
   searchPlaceholder = 'Search by booking ID, outlet, or summary...',
+  outlets,
+  regions,
 }: FeedbackTableFiltersProps<T>) => {
-  const regionOptions = ['All Regions', ...Array.from(new Set(OUTLET_OPTIONS.map((outlet) => outlet.region))).sort()];
+  // Use dynamic outlets if provided, else fall back to static OUTLET_OPTIONS
+  const allOutlets = useMemo(() => {
+    if (outlets) return outlets;
+    return OUTLET_OPTIONS.map((o) => ({ id: o.id, name: o.name, region: o.region }));
+  }, [outlets]);
 
-  const outletOptions = [
-    { id: 'All Outlets', name: 'All Outlets' },
-    ...OUTLET_OPTIONS.filter((outlet) => value.region === 'All Regions' || outlet.region === value.region).map(
-      (outlet) => ({
-        id: outlet.id,
-        name: outlet.name,
-      }),
-    ),
-  ];
+  const regionOptions = useMemo(() => {
+    if (regions) return ['All Regions', ...regions];
+    return ['All Regions', ...Array.from(new Set(allOutlets.map((o) => o.region).filter(Boolean) as string[])).sort()];
+  }, [regions, allOutlets]);
+
+  const outletOptions = useMemo(() => [
+    { value: 'All Outlets', label: 'All Outlets' },
+    ...allOutlets
+      .filter((o) => value.region === 'All Regions' || o.region === value.region)
+      .map((o) => ({ value: o.id, label: o.name })),
+  ], [allOutlets, value.region]);
 
   const applyPatch = (patch: Partial<T>) => {
     onChange({
@@ -178,20 +307,11 @@ export const FeedbackTableFilters = <T extends FeedbackTableFiltersValue>({
 
         <div className="flex flex-col gap-1.5">
           <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Outlet</span>
-          <div className="relative">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-            <select
-              value={value.outletId}
-              onChange={(event) => applyPatch({ outletId: event.target.value } as Partial<T>)}
-              className="h-10 w-full appearance-none rounded-lg bg-slate-50 pl-10 pr-4 text-sm font-medium text-slate-700 outline-none ring-2 ring-transparent transition-all focus:ring-orange-500/20"
-            >
-              {outletOptions.map((outlet) => (
-                <option key={outlet.id} value={outlet.id}>
-                  {outlet.name}
-                </option>
-              ))}
-            </select>
-          </div>
+          <OutletSearchableSelect
+            value={value.outletId}
+            options={outletOptions}
+            onChange={(outletId) => applyPatch({ outletId } as Partial<T>)}
+          />
         </div>
 
         <div className="flex flex-col gap-1.5">

@@ -16,6 +16,7 @@ import { FeedbackTableFilters } from '@/shared/components/filters/feedback-table
 import { Pagination } from '@/shared/components/ui/pagination';
 import { cn } from '@/shared/lib/cn';
 import { downloadCsv } from '@/shared/lib/csv';
+import { useOutletOptions } from '@/shared/hooks/use-outlet-options';
 import type { FeedbackListItem, Rating } from '@/shared/types/feedback';
 
 const ratingWeight: Record<Rating, number> = {
@@ -79,6 +80,7 @@ export const CallsPage = () => {
   const [isExporting, setIsExporting] = useState(false);
 
   const callsQuery = useCallsPageRecords(filters);
+  const outletOptionsQuery = useOutletOptions();
 
   const openDetails = (feedbackId: string) => {
     router.push(`/feedback/${feedbackId}`);
@@ -178,6 +180,8 @@ export const CallsPage = () => {
           isLoading={callsQuery.isPending}
           isExporting={isExporting}
           searchPlaceholder="Search outlets or summaries..."
+          outlets={outletOptionsQuery.data?.outlets}
+          regions={outletOptionsQuery.data?.regions}
         />
       </header>
 
@@ -194,7 +198,7 @@ export const CallsPage = () => {
 
       {callsQuery.data && callsQuery.data.items.length > 0 ? (
         <div className="flex-1 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-          <div className="h-full overflow-x-auto">
+          <div className="max-h-[calc(100vh-380px)] overflow-auto">
             <table className="min-w-[1520px] w-full border-collapse text-left">
               <thead className="sticky top-0 z-10 bg-white">
                 <tr className="border-b border-slate-100 bg-slate-50/50">
