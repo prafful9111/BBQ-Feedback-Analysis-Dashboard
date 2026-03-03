@@ -92,6 +92,7 @@ export const feedbackRecordSchema = z.object({
   translatedTranscript: z.string().nullable(),
   specialMentions: z.array(z.string()).nullable(),
   issueTickets: z.array(issueTicketSchema),
+  recordingUrl: z.string().nullable(),
 });
 export type FeedbackRecord = z.infer<typeof feedbackRecordSchema>;
 

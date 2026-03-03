@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
 
 declare global {
   // eslint-disable-next-line no-var
@@ -6,18 +7,14 @@ declare global {
 }
 
 const prismaClientSingleton = () => {
+  const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
   return new PrismaClient({
+    adapter,
     log: process.env.NODE_ENV === 'development' ? ['warn', 'error'] : ['error'],
   });
 };
 
-/**
- * Prisma client singleton.
- *
- * TODO(SUPABASE): once the Supabase Postgres URL is provided in DATABASE_URL,
- * this client will connect automatically and the repository toggle can move
- * from dummy -> prisma for production data access.
- */
+/** Prisma client singleton. */
 export const prisma = global.prisma ?? prismaClientSingleton();
 
 if (process.env.NODE_ENV !== 'production') {

@@ -1,7 +1,7 @@
 'use client';
 
-import type { ComponentType } from 'react';
-import { Calendar, MapPin, Search, UserCheck } from 'lucide-react';
+import { type ComponentType, useEffect, useMemo, useRef, useState } from 'react';
+import { Calendar, ChevronDown, MapPin, Search, UserCheck, X } from 'lucide-react';
 
 import { Button } from '@/shared/components/ui/button';
 import type { DashboardFilterOptions } from '@/shared/types/feedback';
@@ -22,12 +22,12 @@ const quickDateOptions: Array<{
   key: Exclude<DashboardQuickDateKey, 'custom'>;
   label: string;
 }> = [
-  { key: 'today', label: 'Today' },
-  { key: 'yesterday', label: 'Yesterday' },
-  { key: 'upto_this_week', label: 'Up until this week' },
-  { key: 'last_week', label: 'Last week' },
-  { key: 'last_month', label: 'Last month' },
-];
+    { key: 'today', label: 'Today' },
+    { key: 'yesterday', label: 'Yesterday' },
+    { key: 'upto_this_week', label: 'Up until this week' },
+    { key: 'last_week', label: 'Last week' },
+    { key: 'last_month', label: 'Last month' },
+  ];
 
 interface FilterOption {
   label: string;
@@ -56,6 +56,127 @@ const FilterSelect = ({ icon: Icon, value, options, onChange }: FilterSelectProp
           </option>
         ))}
       </select>
+    </div>
+  );
+};
+
+/* ---- Searchable select for outlets (type-to-filter, scrollable) ---- */
+
+interface SearchableSelectProps {
+  icon: ComponentType<{ className?: string }>;
+  value: string;
+  options: FilterOption[];
+  onChange: (nextValue: string) => void;
+  placeholder?: string;
+}
+
+const SearchableSelect = ({
+  icon: Icon,
+  value,
+  options,
+  onChange,
+  placeholder = 'Search outlets…',
+}: SearchableSelectProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const selectedLabel = useMemo(
+    () => options.find((o) => o.value === value)?.label ?? value,
+    [options, value],
+  );
+
+  const filtered = useMemo(() => {
+    if (!query) return options;
+    const lower = query.toLowerCase();
+    return options.filter((o) => o.label.toLowerCase().includes(lower));
+  }, [options, query]);
+
+  useEffect(() => {
+    const handler = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+        setQuery('');
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative">
+      <button
+        type="button"
+        onClick={() => {
+          setIsOpen(!isOpen);
+          if (!isOpen) {
+            setTimeout(() => inputRef.current?.focus(), 50);
+          } else {
+            setQuery('');
+          }
+        }}
+        className="flex h-10 w-full items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 text-left text-sm font-medium text-slate-700 outline-none transition-colors hover:bg-white focus:border-orange-300 focus:bg-white"
+      >
+        <Icon className="h-4 w-4 shrink-0 text-slate-400" />
+        <span className="flex-1 truncate">{selectedLabel}</span>
+        {value !== options[0]?.value ? (
+          <X
+            className="h-3.5 w-3.5 shrink-0 cursor-pointer text-slate-400 hover:text-slate-600"
+            onClick={(e) => {
+              e.stopPropagation();
+              onChange(options[0]?.value ?? '');
+              setIsOpen(false);
+              setQuery('');
+            }}
+          />
+        ) : (
+          <ChevronDown className={`h-3.5 w-3.5 shrink-0 text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        )}
+      </button>
+
+      {isOpen && (
+        <div className="absolute left-0 right-0 top-full z-50 mt-1 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg">
+          <div className="border-b border-slate-100 p-2">
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
+              <input
+                ref={inputRef}
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={placeholder}
+                className="h-8 w-full rounded-md border border-slate-200 bg-slate-50 pl-8 pr-3 text-xs font-medium text-slate-700 outline-none focus:border-orange-300 focus:bg-white"
+              />
+            </div>
+          </div>
+
+          <ul className="max-h-60 overflow-y-auto py-1">
+            {filtered.length === 0 ? (
+              <li className="px-3 py-2 text-xs text-slate-400">No outlets found</li>
+            ) : (
+              filtered.map((option) => (
+                <li key={option.value}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onChange(option.value);
+                      setIsOpen(false);
+                      setQuery('');
+                    }}
+                    className={`w-full px-3 py-2 text-left text-xs font-medium transition-colors hover:bg-orange-50 hover:text-orange-700 ${option.value === value
+                      ? 'bg-orange-50 text-orange-700'
+                      : 'text-slate-700'
+                      }`}
+                  >
+                    {option.label}
+                  </button>
+                </li>
+              ))
+            )}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
@@ -211,7 +332,7 @@ export const DashboardFilters = ({ value, options, onChange }: DashboardFiltersP
             <label className="mb-1 block text-[10px] font-bold uppercase tracking-wider text-slate-400">
               Outlet
             </label>
-            <FilterSelect
+            <SearchableSelect
               icon={Search}
               value={value.outletId}
               options={outletOptions}
@@ -229,18 +350,16 @@ export const DashboardFilters = ({ value, options, onChange }: DashboardFiltersP
               <button
                 type="button"
                 onClick={() => applyDateMode('single')}
-                className={`flex-1 rounded-md px-3 py-1.5 text-xs font-bold transition-all ${
-                  value.dateMode === 'single' ? 'bg-white text-orange-700 shadow-sm' : 'text-slate-500'
-                }`}
+                className={`flex-1 rounded-md px-3 py-1.5 text-xs font-bold transition-all ${value.dateMode === 'single' ? 'bg-white text-orange-700 shadow-sm' : 'text-slate-500'
+                  }`}
               >
                 Single Date
               </button>
               <button
                 type="button"
                 onClick={() => applyDateMode('range')}
-                className={`flex-1 rounded-md px-3 py-1.5 text-xs font-bold transition-all ${
-                  value.dateMode === 'range' ? 'bg-white text-orange-700 shadow-sm' : 'text-slate-500'
-                }`}
+                className={`flex-1 rounded-md px-3 py-1.5 text-xs font-bold transition-all ${value.dateMode === 'range' ? 'bg-white text-orange-700 shadow-sm' : 'text-slate-500'
+                  }`}
               >
                 Date Range
               </button>
@@ -279,11 +398,10 @@ export const DashboardFilters = ({ value, options, onChange }: DashboardFiltersP
               key={option.key}
               type="button"
               onClick={() => applyQuickRange(option.key)}
-              className={`rounded-md border px-3 py-1.5 text-xs font-semibold transition-colors ${
-                value.quickDateKey === option.key
-                  ? 'border-orange-600 bg-orange-50 text-orange-700'
-                  : 'border-slate-200 bg-white text-slate-500 hover:bg-slate-50'
-              }`}
+              className={`rounded-md border px-3 py-1.5 text-xs font-semibold transition-colors ${value.quickDateKey === option.key
+                ? 'border-orange-600 bg-orange-50 text-orange-700'
+                : 'border-slate-200 bg-white text-slate-500 hover:bg-slate-50'
+                }`}
             >
               {option.label}
             </button>
