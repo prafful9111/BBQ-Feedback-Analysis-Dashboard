@@ -15,7 +15,7 @@ import {
 
 import { ISSUE_CATEGORIES } from '@/shared/constants/feedback';
 import { cn } from '@/shared/lib/cn';
-import type { IssueCategory, IssueTicketDistribution } from '@/shared/types/feedback';
+import type { IssueCategory, IssueTicketDistribution, IssueTicketDistributionPoint } from '@/shared/types/feedback';
 
 type BreakdownView = 'category' | 'subcategory' | 'attribute';
 type SeverityKey = 'all' | 'high' | 'medium' | 'low';
@@ -46,7 +46,7 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
   }, [selectedSeverities]);
 
   const chartData = useMemo(() => {
-    let source: any[] = [];
+    let source: IssueTicketDistributionPoint[] = [];
     if (view === 'category') {
       source = data.category || [];
     } else if (view === 'subcategory') {
