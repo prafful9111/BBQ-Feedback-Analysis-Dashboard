@@ -217,6 +217,24 @@ export const FeedbackPdfPage = ({ feedbackId }: FeedbackPdfPageProps) => {
           </div>
         </section>
 
+        {feedback.attributesUsage && Object.keys(feedback.attributesUsage).length > 0 && (
+          <section className="mb-8">
+            <h2 className="mb-2 text-sm font-bold uppercase tracking-wider text-slate-700">Call Attributes</h2>
+            <div className="grid grid-cols-2 gap-3 rounded-lg border border-slate-200 bg-white p-4 sm:grid-cols-3">
+              {Object.entries(feedback.attributesUsage).map(([key, value]) => (
+                <div key={key} className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    {key.replace(/_/g, ' ')}
+                  </p>
+                  <p className="text-xs font-semibold text-slate-700 capitalize">
+                    {String(value)}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {feedback.specialMentions && feedback.specialMentions.length > 0 ? (
           <section className="mb-8">
             <h2 className="mb-2 text-sm font-bold uppercase tracking-wider text-emerald-700">Special Mentions</h2>
@@ -248,6 +266,19 @@ export const FeedbackPdfPage = ({ feedbackId }: FeedbackPdfPageProps) => {
                   </div>
                   <p className="mb-1 text-sm font-semibold text-red-900">{ticket.subcategory}</p>
                   <p className="text-sm text-red-800">{ticket.description}</p>
+
+                  {ticket.assignedAttributes && Object.keys(ticket.assignedAttributes).length > 0 && (
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {Object.entries(ticket.assignedAttributes).map(([key, value]) => (
+                        <div
+                          key={key}
+                          className="rounded-full border border-red-100 bg-red-50/50 px-2 py-0.5 text-[10px] font-medium text-red-700"
+                        >
+                          {key}: {String(value)}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

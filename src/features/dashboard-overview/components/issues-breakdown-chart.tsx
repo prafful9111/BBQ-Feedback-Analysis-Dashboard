@@ -17,7 +17,7 @@ import { ISSUE_CATEGORIES } from '@/shared/constants/feedback';
 import { cn } from '@/shared/lib/cn';
 import type { IssueCategory, IssueTicketDistribution } from '@/shared/types/feedback';
 
-type BreakdownView = 'category' | 'subcategory';
+type BreakdownView = 'category' | 'subcategory' | 'attribute';
 type SeverityKey = 'all' | 'high' | 'medium' | 'low';
 
 interface IssuesBreakdownChartProps {
@@ -35,6 +35,7 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
   const [view, setView] = useState<BreakdownView>('category');
   const [activeCategory, setActiveCategory] = useState<IssueCategory>('Food & Beverage');
   const [selectedSeverities, setSelectedSeverities] = useState<SeverityKey[]>(['all']);
+  const [showAll, setShowAll] = useState(false);
 
   const activeSeverityKeys = useMemo(() => {
     if (selectedSeverities.includes('all')) {
@@ -45,7 +46,17 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
   }, [selectedSeverities]);
 
   const chartData = useMemo(() => {
-    const source = view === 'category' ? data.category : data.subcategory[activeCategory];
+    let source: any[] = [];
+    if (view === 'category') {
+      source = data.category || [];
+    } else if (view === 'subcategory') {
+      source = data.subcategory?.[activeCategory] || [];
+    } else {
+      source = data.attribute || [];
+      if (!showAll) {
+        source = source.slice(0, 15);
+      }
+    }
 
     return source.map((point) => ({
       label: point.label,
@@ -54,7 +65,14 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
       medium: point.counts.medium,
       low: point.counts.low,
     }));
-  }, [activeCategory, data, view]);
+  }, [activeCategory, data, view, showAll]);
+
+  const scrollableHeight = useMemo(() => {
+    // Base height for category/subcategory and top 15
+    if (view !== 'attribute' || !showAll) return 340;
+    // For "show all" attributes, provide 30px per bar + some padding
+    return Math.max(340, chartData.length * 30 + 40);
+  }, [view, showAll, chartData.length]);
 
   const toggleSeverity = (severity: SeverityKey) => {
     if (severity === 'all') {
@@ -97,6 +115,16 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
             )}
           >
             Sub-category
+          </button>
+          <button
+            type="button"
+            onClick={() => setView('attribute')}
+            className={cn(
+              'rounded-md px-3 py-1.5 text-xs font-bold transition-all',
+              view === 'attribute' ? 'bg-white text-orange-700 shadow-sm' : 'text-slate-500 hover:text-slate-700',
+            )}
+          >
+            Attribute
           </button>
         </div>
 
@@ -142,65 +170,87 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
         </div>
       ) : null}
 
-      <div className="h-[340px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={chartData}
-            layout="vertical"
-            margin={{ top: 8, right: 16, left: 12, bottom: 8 }}
-            barCategoryGap={14}
-            barGap={4}
+      {view === 'attribute' && data.attribute && data.attribute.length > 15 ? (
+        <div className="flex items-center justify-between">
+          <p className="text-[10px] font-medium text-slate-500">
+            {showAll ? `Showing all ${data.attribute.length} attributes` : 'Showing top 15 attributes'}
+          </p>
+          <button
+            type="button"
+            onClick={() => setShowAll(!showAll)}
+            className="text-[10px] font-bold uppercase tracking-wider text-orange-600 hover:text-orange-700"
           >
-            <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e2e8f0" />
-            <XAxis type="number" allowDecimals={false} />
-            <YAxis
-              type="category"
-              dataKey="label"
-              width={view === 'subcategory' ? 160 : 120}
-              tickLine={false}
-              axisLine={false}
-              fontSize={11}
-            />
-            <Tooltip
-              cursor={{ fill: '#f8fafc' }}
-              contentStyle={{
-                borderRadius: '0.75rem',
-                borderColor: '#e2e8f0',
-              }}
-            />
-            <Legend
-              verticalAlign="top"
-              align="right"
-              iconType="circle"
-              iconSize={8}
-              wrapperStyle={{ fontSize: '10px' }}
-              formatter={(value: string) =>
-                severityMeta[value as SeverityKey]?.label ?? value
-              }
-            />
+            {showAll ? 'Show Top 15' : 'Show All'}
+          </button>
+        </div>
+      ) : null}
 
-            {activeSeverityKeys.map((severityKey) => (
-              <Bar
-                key={severityKey}
-                dataKey={severityKey}
-                name={severityKey}
-                fill={severityMeta[severityKey].color}
-                radius={[0, 5, 5, 0]}
-                maxBarSize={activeSeverityKeys.length === 1 ? 18 : 10}
-              >
-                {activeSeverityKeys.length === 1 ? (
+      <div
+        className={cn(
+          "h-[340px] w-full transition-all duration-300 ease-in-out",
+          view === 'attribute' && showAll ? "overflow-y-auto scrollbar-thin scrollbar-thumb-slate-200 pr-2" : "overflow-hidden"
+        )}
+      >
+        <div style={{ height: scrollableHeight, minHeight: 340 }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={chartData}
+              layout="vertical"
+              margin={{ top: 8, right: 28, left: 12, bottom: 8 }}
+              barCategoryGap={view === 'attribute' && showAll ? 6 : 14}
+              barGap={4}
+            >
+              <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e2e8f0" />
+              <XAxis type="number" allowDecimals={false} hide={view === 'attribute' && showAll} />
+              <YAxis
+                type="category"
+                dataKey="label"
+                width={view === 'subcategory' ? 160 : view === 'attribute' ? 180 : 120}
+                tickLine={false}
+                axisLine={false}
+                fontSize={11}
+              />
+              <Tooltip
+                cursor={{ fill: '#f8fafc' }}
+                contentStyle={{
+                  borderRadius: '0.75rem',
+                  borderColor: '#e2e8f0',
+                  boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+                }}
+              />
+              <Legend
+                verticalAlign="top"
+                align="right"
+                iconType="circle"
+                iconSize={8}
+                wrapperStyle={{ fontSize: '10px', paddingBottom: '10px' }}
+                formatter={(value: string) =>
+                  severityMeta[value as SeverityKey]?.label ?? value
+                }
+              />
+
+              {activeSeverityKeys.map((severityKey) => (
+                <Bar
+                  key={severityKey}
+                  dataKey={severityKey}
+                  name={severityKey}
+                  fill={severityMeta[severityKey].color}
+                  radius={[0, 4, 4, 0]}
+                  maxBarSize={view === 'attribute' && showAll ? 12 : 18}
+                >
                   <LabelList
                     dataKey={severityKey}
                     position="right"
-                    fill="#334155"
-                    fontSize={10}
-                    fontWeight={700}
+                    fill="#475569"
+                    fontSize={view === 'attribute' && showAll ? 9 : 10}
+                    fontWeight={600}
+                    offset={8}
                   />
-                ) : null}
-              </Bar>
-            ))}
-          </BarChart>
-        </ResponsiveContainer>
+                </Bar>
+              ))}
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </div>
   );
