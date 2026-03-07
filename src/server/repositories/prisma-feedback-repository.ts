@@ -112,10 +112,10 @@ function normaliseRating(raw: string | null | undefined): Rating {
 }
 
 /** Safely parse JSON from string or return null */
-function safeParseJson(raw: string | null | undefined): any {
+function safeParseJson<T>(raw: string | null | undefined): T | null {
   if (!raw) return null;
   try {
-    return JSON.parse(raw);
+    return JSON.parse(raw) as T;
   } catch {
     return null;
   }
