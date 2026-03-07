@@ -63,6 +63,7 @@ export const issueTicketSchema = z
     subcategory: issueSubcategorySchema,
     severity: issueSeveritySchema,
     description: z.string().min(1),
+    assignedAttributes: z.record(z.any()).nullable(),
   })
   .refine(
     (ticket) => !(ticket.ticketType === 'Complaint' && ticket.severity === 'Low'),
@@ -93,6 +94,7 @@ export const feedbackRecordSchema = z.object({
   specialMentions: z.array(z.string()).nullable(),
   issueTickets: z.array(issueTicketSchema),
   recordingUrl: z.string().nullable(),
+  attributesUsage: z.record(z.any()).nullable(),
 });
 export type FeedbackRecord = z.infer<typeof feedbackRecordSchema>;
 
@@ -216,6 +218,7 @@ export const issueTicketDistributionSchema = z.object({
     'Booking & Billing': z.array(issueTicketDistributionPointSchema),
     'Staff & Service': z.array(issueTicketDistributionPointSchema),
   }),
+  attribute: z.array(issueTicketDistributionPointSchema),
 });
 export type IssueTicketDistribution = z.infer<typeof issueTicketDistributionSchema>;
 

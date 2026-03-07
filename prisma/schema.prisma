@@ -12,34 +12,36 @@ model feedback_analysis {
   outletId                  BigInt?
   bookingId                 String?
   recordingURL              String?
-  transcription             Json?
-  translation               Json?
-  translation_usage         Json?
+  transcription             String?
+  translation               String?
+  translation_usage         String?
   audio_metadata            String?
   is_processed              Boolean?
   is_sent                   Boolean?
   client_response           String?
   created_at                DateTime?       @db.Timestamptz(6)
   updated_at                DateTime?       @db.Timestamptz(6)
-  csat_scorecard            Json?
+  csat_scorecard            String?
   overall_experience_rating String?
   special_mentions          String?
   summary                   String?
   transcript                String?
   outletName                String?
+  attributes_usage          String?
   issue_tickets             issue_tickets[]
 }
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model issue_tickets {
-  id                 String             @id
-  ticket_type        String?
-  category           String?
-  subcategory        String?
-  severity           String?
-  description        String?
-  created_at         DateTime?          @db.Timestamptz(6)
-  updated_at         DateTime?          @db.Timestamptz(6)
-  feedbackAnalysisId String?
-  feedback_analysis  feedback_analysis? @relation(fields: [feedbackAnalysisId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id                  String             @id
+  ticket_type         String?
+  category            String?
+  subcategory         String?
+  severity            String?
+  description         String?
+  created_at          DateTime?          @db.Timestamptz(6)
+  updated_at          DateTime?          @db.Timestamptz(6)
+  feedbackAnalysisId  String?
+  assigned_attributes String?
+  feedback_analysis   feedback_analysis? @relation(fields: [feedbackAnalysisId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

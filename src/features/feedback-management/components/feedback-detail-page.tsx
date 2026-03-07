@@ -14,6 +14,7 @@ import {
   Pause,
   Phone,
   Play,
+  Tag,
 } from 'lucide-react';
 
 import { useFeedbackDetail } from '@/features/feedback-management/hooks/use-feedback-detail';
@@ -464,6 +465,20 @@ export const FeedbackDetailPage = ({ feedbackId }: FeedbackDetailPageProps) => {
                         </div>
                         <p className="mb-1 text-sm font-bold text-red-900">{ticket.subcategory}</p>
                         <p className="text-xs leading-relaxed text-red-800">{ticket.description}</p>
+
+                        {ticket.assignedAttributes && Object.keys(ticket.assignedAttributes).length > 0 && (
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {Object.entries(ticket.assignedAttributes).map(([key, value]) => (
+                              <div
+                                key={key}
+                                className="flex items-center gap-1.5 rounded-full border border-red-100 bg-red-50/50 px-2.5 py-1 text-[10px] font-semibold text-red-700"
+                              >
+                                <Tag className="h-3 w-3" />
+                                <span>{key}: {String(value)}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -485,6 +500,34 @@ export const FeedbackDetailPage = ({ feedbackId }: FeedbackDetailPageProps) => {
                 </p>
               </div>
             </section>
+
+            {feedback.attributesUsage && Object.keys(feedback.attributesUsage).length > 0 && (
+              <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+                <h3 className="mb-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                  Call Attributes
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {Object.entries(feedback.attributesUsage).map(([key, value]) => (
+                    <div
+                      key={key}
+                      className="group relative flex items-center gap-2 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition-all hover:border-orange-200 hover:bg-orange-50/50"
+                    >
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-slate-400 group-hover:text-orange-500 shadow-sm border border-slate-100">
+                        <Tag className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-orange-600/70">
+                          {key.replace(/_/g, ' ')}
+                        </p>
+                        <p className="text-sm font-semibold text-slate-700 group-hover:text-slate-900 capitalize">
+                          {String(value)}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
             <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
               <h3 className="mb-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">

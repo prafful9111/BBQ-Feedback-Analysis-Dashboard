@@ -64,10 +64,23 @@ function mapSeverity(severity: string | null | undefined): IssueSeverity {
   return 'Medium';
 }
 
-/** Safely parse a CSAT scorecard from Json column */
+/** Safely parse a CSAT scorecard from Json column (or stringified JSON) */
 function parseCsatScorecard(raw: unknown): CsatScorecard {
-  if (!raw || typeof raw !== 'object') return { ...DEFAULT_CSAT };
-  const obj = raw as Record<string, string>;
+  if (!raw) return { ...DEFAULT_CSAT };
+
+  let obj: Record<string, string> = {};
+  if (typeof raw === 'string') {
+    try {
+      obj = JSON.parse(raw);
+    } catch {
+      return { ...DEFAULT_CSAT };
+    }
+  } else if (typeof raw === 'object' && raw !== null) {
+    obj = raw as Record<string, string>;
+  } else {
+    return { ...DEFAULT_CSAT };
+  }
+
   const result = { ...DEFAULT_CSAT };
   for (const field of CSAT_FIELDS) {
     const value = obj[field];
@@ -98,6 +111,16 @@ function normaliseRating(raw: string | null | undefined): Rating {
   return found ?? 'N/A';
 }
 
+/** Safely parse JSON from string or return null */
+function safeParseJson(raw: string | null | undefined): any {
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
 type DbFeedback = feedback_analysis & { issue_tickets: issue_tickets[] };
 
 /** Map a DB row + its tickets to a FeedbackRecord */
@@ -113,6 +136,7 @@ function mapToFeedbackRecord(row: DbFeedback): FeedbackRecord {
       subcategory: (t.subcategory ?? 'Overall') as IssueTicket['subcategory'],
       severity: mapSeverity(t.severity),
       description: t.description ?? '',
+      assignedAttributes: safeParseJson(t.assigned_attributes),
     }));
 
   return {
@@ -130,6 +154,7 @@ function mapToFeedbackRecord(row: DbFeedback): FeedbackRecord {
     specialMentions: parseSpecialMentions(row.special_mentions),
     issueTickets: tickets,
     recordingUrl: row.recordingURL ?? null,
+    attributesUsage: safeParseJson(row.attributes_usage),
   };
 }
 
@@ -340,6 +365,7 @@ export class PrismaFeedbackRepository implements FeedbackRepository {
     const outletAccumulator = new Map<string, OutletAccumulator>();
     const regionIssues = new Map<string, number>();
     const regionCalls = new Map<string, number>();
+    const attributeSeverityMap = new Map<string, IssueTicketSeverityCounts>();
 
     for (const record of records) {
       totalCalls += 1;
@@ -429,6 +455,20 @@ export class PrismaFeedbackRepository implements FeedbackRepository {
         }
 
         outletRow.categoryIssues[issue.category as IssueCategory] += 1;
+
+        if (issue.assignedAttributes && typeof issue.assignedAttributes === 'object') {
+          for (const [key, value] of Object.entries(issue.assignedAttributes)) {
+            const label = `${key}: ${value}`;
+            const existing = attributeSeverityMap.get(label);
+            if (existing) {
+              bumpSeverity(existing, issue.severity);
+            } else {
+              const initial = createSeverityAccumulator();
+              bumpSeverity(initial, issue.severity);
+              attributeSeverityMap.set(label, initial);
+            }
+          }
+        }
       }
 
       const totalIssuesForCall = record.issueTickets.length;
@@ -490,6 +530,7 @@ export class PrismaFeedbackRepository implements FeedbackRepository {
         'Booking & Billing': this.mapToSeverityDistribution(subcategorySeverityMap['Booking & Billing']),
         'Staff & Service': this.mapToSeverityDistribution(subcategorySeverityMap['Staff & Service']),
       },
+      attribute: this.mapToSeverityDistribution(attributeSeverityMap),
     };
 
     const alerts = this.buildAlerts(performanceMatrix, regionIssues, regionCalls, totalCalls);
