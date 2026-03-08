@@ -456,16 +456,22 @@ export class PrismaFeedbackRepository implements FeedbackRepository {
 
         outletRow.categoryIssues[issue.category as IssueCategory] += 1;
 
-        if (issue.assignedAttributes && typeof issue.assignedAttributes === 'object') {
-          for (const [key, value] of Object.entries(issue.assignedAttributes)) {
-            const label = `${key}: ${value}`;
-            const existing = attributeSeverityMap.get(label);
+        if (issue.assignedAttributes) {
+          const attributes = Array.isArray(issue.assignedAttributes)
+            ? issue.assignedAttributes
+            : Object.values(issue.assignedAttributes);
+
+          for (const attributeValue of attributes) {
+            if (typeof attributeValue !== 'string') continue;
+            // Include category and subcategory in the internal map key to ensure uniqueness + easy retrieval
+            const compositeKey = `${issue.category}|${issue.subcategory}|${attributeValue}`;
+            const existing = attributeSeverityMap.get(compositeKey);
             if (existing) {
               bumpSeverity(existing, issue.severity);
             } else {
               const initial = createSeverityAccumulator();
               bumpSeverity(initial, issue.severity);
-              attributeSeverityMap.set(label, initial);
+              attributeSeverityMap.set(compositeKey, initial);
             }
           }
         }
@@ -689,7 +695,20 @@ export class PrismaFeedbackRepository implements FeedbackRepository {
 
   private mapToSeverityDistribution(map: Map<string, IssueTicketSeverityCounts>) {
     return Array.from(map.entries())
-      .map(([label, counts]) => ({ label, counts }))
+      .map(([fullKey, counts]) => {
+        // If it's a composite key from attributes: "Category|Subcategory|Value"
+        if (fullKey.includes('|')) {
+          const [category, subcategory, value] = fullKey.split('|');
+          return {
+            label: `${subcategory}: ${value}`,
+            counts,
+            category,
+            subcategory,
+          };
+        }
+        // Fallback for subcategory distributions which use simple labels
+        return { label: fullKey, counts };
+      })
       .sort((a, b) => b.counts.all - a.counts.all);
   }
 }

@@ -204,21 +204,22 @@ export const issueTicketSeverityCountsSchema = z.object({
 });
 export type IssueTicketSeverityCounts = z.infer<typeof issueTicketSeverityCountsSchema>;
 
-export const issueTicketDistributionPointSchema = z.object({
-  label: z.string().min(1),
-  counts: issueTicketSeverityCountsSchema,
-});
-export type IssueTicketDistributionPoint = z.infer<typeof issueTicketDistributionPointSchema>;
+export interface IssueTicketDistributionPoint {
+  label: string;
+  counts: IssueTicketSeverityCounts;
+  category?: string;
+  subcategory?: string;
+}
 
 export const issueTicketDistributionSchema = z.object({
-  category: z.array(issueTicketDistributionPointSchema),
+  category: z.array(z.any()),
   subcategory: z.object({
-    'Food & Beverage': z.array(issueTicketDistributionPointSchema),
-    'Ambience & Hygiene': z.array(issueTicketDistributionPointSchema),
-    'Booking & Billing': z.array(issueTicketDistributionPointSchema),
-    'Staff & Service': z.array(issueTicketDistributionPointSchema),
+    'Food & Beverage': z.array(z.any()),
+    'Ambience & Hygiene': z.array(z.any()),
+    'Booking & Billing': z.array(z.any()),
+    'Staff & Service': z.array(z.any()),
   }),
-  attribute: z.array(issueTicketDistributionPointSchema),
+  attribute: z.array(z.any()),
 });
 export type IssueTicketDistribution = z.infer<typeof issueTicketDistributionSchema>;
 
