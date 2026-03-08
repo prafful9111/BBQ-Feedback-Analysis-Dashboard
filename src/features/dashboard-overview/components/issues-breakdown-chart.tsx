@@ -13,8 +13,9 @@ import {
   YAxis,
 } from 'recharts';
 
-import { ISSUE_CATEGORIES } from '@/shared/constants/feedback';
+import { ISSUE_CATEGORIES, CATEGORY_SUBCATEGORY_MAP } from '@/shared/constants/feedback';
 import { cn } from '@/shared/lib/cn';
+import { Select } from '@/shared/components/ui/select';
 import type { IssueCategory, IssueTicketDistribution, IssueTicketDistributionPoint } from '@/shared/types/feedback';
 
 type BreakdownView = 'category' | 'subcategory' | 'attribute';
@@ -37,6 +38,10 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
   const [selectedSeverities, setSelectedSeverities] = useState<SeverityKey[]>(['all']);
   const [showAll, setShowAll] = useState(false);
 
+  // New filter states for Attribute view
+  const [filterCategory, setFilterCategory] = useState<string>('');
+  const [filterSubcategory, setFilterSubcategory] = useState<string>('');
+
   const activeSeverityKeys = useMemo(() => {
     if (selectedSeverities.includes('all')) {
       return ['all'] as SeverityKey[];
@@ -45,6 +50,27 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
     return selectedSeverities;
   }, [selectedSeverities]);
 
+  const allFilteredAttributes = useMemo(() => {
+    let source = data.attribute || [];
+
+    if (filterCategory) {
+      source = source.filter(p => p.category === filterCategory);
+    }
+
+    if (filterSubcategory) {
+      source = source.filter(p => p.subcategory === filterSubcategory);
+    }
+
+    return source;
+  }, [data.attribute, filterCategory, filterSubcategory]);
+
+  const filteredAttributeData = useMemo(() => {
+    if (!showAll) {
+      return allFilteredAttributes.slice(0, 15);
+    }
+    return allFilteredAttributes;
+  }, [allFilteredAttributes, showAll]);
+
   const chartData = useMemo(() => {
     let source: IssueTicketDistributionPoint[] = [];
     if (view === 'category') {
@@ -52,10 +78,7 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
     } else if (view === 'subcategory') {
       source = data.subcategory?.[activeCategory] || [];
     } else {
-      source = data.attribute || [];
-      if (!showAll) {
-        source = source.slice(0, 15);
-      }
+      source = filteredAttributeData;
     }
 
     return source.map((point) => ({
@@ -65,7 +88,15 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
       medium: point.counts.medium,
       low: point.counts.low,
     }));
-  }, [activeCategory, data, view, showAll]);
+  }, [activeCategory, data, view, filteredAttributeData]);
+
+  const handleCategoryClick = (category: string) => {
+    if (view === 'category') {
+      setFilterCategory(category);
+      setFilterSubcategory(''); // Reset subcategory when changing category
+      setView('attribute');
+    }
+  };
 
   const scrollableHeight = useMemo(() => {
     // Base height for category/subcategory and top 15
@@ -170,10 +201,49 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
         </div>
       ) : null}
 
-      {view === 'attribute' && data.attribute && data.attribute.length > 15 ? (
+      {view === 'attribute' ? (
+        <div className="flex flex-wrap items-center gap-3">
+          <Select
+            className="h-8 w-[160px] text-[11px]"
+            value={filterCategory}
+            onChange={(e) => {
+              setFilterCategory(e.target.value);
+              setFilterSubcategory('');
+            }}
+            options={[
+              { label: 'All Categories', value: '' },
+              ...ISSUE_CATEGORIES.map(c => ({ label: c, value: c }))
+            ]}
+          />
+          <Select
+            className="h-8 w-[160px] text-[11px]"
+            value={filterSubcategory}
+            onChange={(e) => setFilterSubcategory(e.target.value)}
+            disabled={!filterCategory}
+            options={[
+              { label: 'All Sub-categories', value: '' },
+              ...(filterCategory ? (CATEGORY_SUBCATEGORY_MAP[filterCategory as IssueCategory] || []).map(s => ({ label: s, value: s })) : [])
+            ]}
+          />
+          {(filterCategory || filterSubcategory) && (
+            <button
+              type="button"
+              onClick={() => {
+                setFilterCategory('');
+                setFilterSubcategory('');
+              }}
+              className="text-[10px] font-bold uppercase tracking-wider text-orange-600 hover:text-orange-700"
+            >
+              Reset Filters
+            </button>
+          )}
+        </div>
+      ) : null}
+
+      {view === 'attribute' && allFilteredAttributes.length > 15 ? (
         <div className="flex items-center justify-between">
           <p className="text-[10px] font-medium text-slate-500">
-            {showAll ? `Showing all ${data.attribute.length} attributes` : 'Showing top 15 attributes'}
+            {showAll ? `Showing all ${allFilteredAttributes.length} attributes` : 'Showing top 15 attributes'}
           </p>
           <button
             type="button"
@@ -237,6 +307,12 @@ export const IssuesBreakdownChart = ({ data }: IssuesBreakdownChartProps) => {
                   fill={severityMeta[severityKey].color}
                   radius={[0, 4, 4, 0]}
                   maxBarSize={view === 'attribute' && showAll ? 12 : 18}
+                  style={{ cursor: view === 'category' ? 'pointer' : 'default' }}
+                  onClick={(data) => {
+                    if (view === 'category' && data && data.label) {
+                      handleCategoryClick(data.label);
+                    }
+                  }}
                 >
                   <LabelList
                     dataKey={severityKey}
